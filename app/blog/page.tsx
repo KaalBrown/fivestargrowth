@@ -1,0 +1,5 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+export const metadata: Metadata = { title: "Growth Insights" };
+const articles = [{ slug: "christchurch-local-seo-guide", title: "The Christchurch Local SEO Guide" }, { slug: "get-more-google-reviews", title: "How to Get More Google Reviews" }, { slug: "website-conversion-basics", title: "Website Conversion Basics for Local Businesses" }];
+export default function BlogPage() { return <section className="mx-auto max-w-5xl px-5 py-20"><p className="font-bold uppercase tracking-widest text-sky">Growth insights</p><h1 className="mt-4 text-5xl font-black">Make your next marketing move a smarter one.</h1><div className="mt-10 grid gap-4 md:grid-cols-3">{articles.map((article) => <Link key={article.slug} href={`/blog/${article.slug}`} className="rounded-2xl border border-white/10 bg-white/[.04] p-6 transition hover:border-lime"><p className="text-sm text-lime">Five Star Growth</p><h2 className="mt-4 text-xl font-bold">{article.title}</h2><p className="mt-6 text-sm text-white/55">Read article →</p></Link>)}</div></section>; }
