@@ -1,4 +1,41 @@
 import { Button } from "@/components/ui/Button";
-import { type PricingPlan } from "@/lib/types";
-const plans: PricingPlan[] = [{ name: "Starter", price: "$99", description: "A sharp local foundation.", features: ["Google profile tune-up", "Review request starter", "Monthly visibility snapshot"] }, { name: "Growth", price: "$499", description: "The essential acquisition engine.", features: ["Local SEO campaign", "Conversion landing page", "Review automation", "Monthly growth plan"], highlighted: true }, { name: "Scale", price: "Custom", description: "For businesses ready to own their category.", features: ["Full website system", "Content & social", "Advanced local SEO", "Strategy support"] }];
-export function PricingPacks() { return <section id="pricing" className="bg-navy/40 px-5 py-24"><div className="mx-auto max-w-6xl text-center"><p className="font-bold uppercase tracking-widest text-sky">Start where you are</p><h2 className="mt-3 text-3xl font-bold sm:text-5xl">Simple offers. Clear momentum.</h2><div className="mt-10 grid gap-5 text-left md:grid-cols-3">{plans.map((plan) => <article key={plan.name} className={`rounded-2xl border p-6 ${plan.highlighted ? "border-lime bg-lime/10 shadow-glow" : "border-white/10 bg-ink/50"}`}><p className="text-lg font-bold">{plan.name}</p><p className="mt-3 text-4xl font-black text-lime">{plan.price}<span className="text-sm font-normal text-white/55">{plan.price !== "Custom" && "/mo"}</span></p><p className="mt-4 text-white/65">{plan.description}</p><ul className="my-7 space-y-3 text-sm text-white/80">{plan.features.map((feature) => <li key={feature}>✓ {feature}</li>)}</ul><Button className="w-full" variant={plan.highlighted ? "glow" : "outline"}>Choose {plan.name}</Button></article>)}</div></div></section>; }
+
+const plans = [
+  {
+    name: "Starter Pack",
+    price: "Starts from $99/mo",
+    tagline: "For local businesses looking for a solid online foundation.",
+    features: [
+      "Smart Website Hosting",
+      "Total analysis of your business online standing reports",
+      "Google Business Profile tune-up every month",
+      "Direct WhatsApp chat box setup for your site",
+      "Chat box sends messages directly to your WhatsApp",
+    ],
+    cta: "Get Started with Starter",
+  },
+  {
+    name: "Growth Pack",
+    price: "Starts from $120/mo",
+    tagline: "For businesses ready to generate predictable local leads.",
+    features: [
+      "Includes EVERYTHING in Starter",
+      "Smart Review Automation System",
+      "Advanced monthly business standing & performance reports",
+    ],
+    cta: "Choose Growth",
+    featured: true,
+  },
+  {
+    name: "Custom Plan",
+    price: "Custom / Flexible",
+    tagline: "Tailored packages built around your exact business goals.",
+    description: "We understand every local business has unique requirements. Book a friendly 1-on-1 strategy meeting with us to discuss your needs so we can tailor an offer specifically for your growth.",
+    features: [],
+    cta: "Book a Strategy Call",
+  },
+];
+
+export function PricingPacks() {
+  return <section id="pricing" className="px-5 py-16 lg:px-9 lg:py-24"><div className="mx-auto max-w-[1440px]"><div className="grid gap-8 lg:grid-cols-2"><div><p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-black/55">Ways to work / 08</p><h2 className="mt-4 text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">Start with a plan that makes sense.</h2></div><p className="max-w-md self-end text-lg leading-7 text-black/60">Each offer gives you a practical place to start. We can tailor the scope once we understand what will make the greatest difference.</p></div><div className="mt-12 grid gap-4 lg:grid-cols-3">{plans.map((plan, index) => <article key={plan.name} className={`flex min-h-[460px] flex-col border p-6 ${plan.featured ? "border-[#ff5a1f] bg-[#ff5a1f] text-white" : "border-black/20"}`}><p className="fsg-mono text-[10px] uppercase tracking-[.16em] opacity-65">0{index + 1} / {plan.name}</p><h3 className="mt-7 text-3xl font-extrabold leading-tight tracking-[-.07em]">{plan.price}</h3><p className="mt-3 max-w-xs leading-7 opacity-75">{plan.tagline}</p>{plan.description && <p className="mt-5 max-w-sm text-sm leading-6 opacity-75">{plan.description}</p>}{plan.features.length > 0 && <ul className="mt-9 space-y-3 border-t border-current/20 pt-5 text-sm">{plan.features.map((feature) => <li key={feature}>✦ {feature}</li>)}</ul>}<Button className={`mt-auto w-full ${plan.featured ? "border-white text-white hover:bg-white hover:text-[#101010]" : ""}`} variant={plan.featured ? "outline" : "solid"}>{plan.cta}</Button></article>)}</div></div></section>;
+}

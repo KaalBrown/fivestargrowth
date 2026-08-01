@@ -2,8 +2,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { MobileNav } from "./MobileNav";
 
-const links = [{ href: "/services/seo", label: "SEO" }, { href: "/services/smart-website", label: "Websites" }, { href: "/services/review-request", label: "Reviews" }, { href: "/blog", label: "Insights" }];
+const links = [
+  { href: "/services/smart-website", label: "Smart Website" },
+  { href: "/services/review-request", label: "Review Automation" },
+  { href: "/services/seo", label: "Local SEO" },
+  { href: "/blog", label: "Blog" },
+];
 
 export function Navbar() {
-  return <header className="sticky top-0 z-40 border-b border-white/10 bg-ink/90 backdrop-blur"><nav className="mx-auto flex h-18 max-w-6xl items-center justify-between px-5 py-4"><Link href="/" className="text-xl font-black tracking-tight">5<span className="text-lime">★</span> GROWTH</Link><div className="hidden items-center gap-6 md:flex">{links.map((link) => <Link key={link.href} href={link.href} className="text-sm text-white/70 hover:text-lime">{link.label}</Link>)}<Button className="px-4 py-2">Get your plan</Button></div><MobileNav links={links} /></nav></header>;
+  return <header className="sticky top-0 z-40 border-b border-black/15 bg-[#f7f7f3]/95 text-[#101010] backdrop-blur"><nav className="mx-auto flex max-w-[1440px] items-center justify-between gap-5 px-5 py-4 lg:px-9"><Link href="/" className="shrink-0 text-lg font-extrabold tracking-[-.08em]">FIVE<span className="text-[#ff5a1f]">★</span>GROWTH</Link><div className="hidden min-w-0 items-center justify-center gap-8 xl:gap-10 lg:flex">{links.map((link) => <Link key={link.href} href={link.href} className="whitespace-nowrap text-center text-[10px] font-bold uppercase tracking-[.06em] hover:text-[#ff5a1f]">{link.label}</Link>)}</div><div className="hidden lg:block"><Button className="whitespace-nowrap px-4 py-2" variant="outline">Get a growth plan</Button></div><MobileNav links={links} /></nav></header>;
 }

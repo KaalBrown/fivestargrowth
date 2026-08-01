@@ -1,10 +1,22 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { blogArticles, getBlogArticle } from "@/lib/blog";
 
-const articles: Record<string, { title: string; intro: string }> = {
-  "christchurch-local-seo-guide": { title: "The Christchurch Local SEO Guide", intro: "Local SEO is how you become the clear choice for customers searching nearby." },
-  "get-more-google-reviews": { title: "How to Get More Google Reviews", intro: "Great reviews come from a reliable process, not good luck." },
-  "website-conversion-basics": { title: "Website Conversion Basics for Local Businesses", intro: "A strong local website makes a customer’s next action simple and low-risk." },
-};
-export function generateStaticParams() { return Object.keys(articles).map((slug) => ({ slug })); }
-export default async function BlogArticle({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const article = articles[slug]; if (!article) notFound(); return <article className="mx-auto max-w-3xl px-5 py-20"><Link href="/blog" className="text-sm text-lime">← All insights</Link><p className="mt-10 font-bold uppercase tracking-widest text-sky">Local growth playbook</p><h1 className="mt-4 text-5xl font-black leading-tight">{article.title}</h1><p className="mt-8 text-xl leading-9 text-white/70">{article.intro}</p><div className="mt-10 space-y-5 leading-8 text-white/75"><p>Customers are already looking for the services you offer. The work is making your value clear, your proof visible, and your next step easy.</p><p>Start with the fundamentals, measure the response, then keep improving the system that turns attention into real enquiries.</p></div></article>; }
+type PageProps = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() { return blogArticles.map(({ slug }) => ({ slug })); }
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getBlogArticle(slug);
+  return article ? { title: article.title, description: article.intro } : {};
+}
+
+export default async function BlogArticlePage({ params }: PageProps) {
+  const { slug } = await params;
+  const article = getBlogArticle(slug);
+  if (!article) notFound();
+
+  return <article className="min-h-screen bg-[#f7f7f3] px-5 py-16 text-[#101010] lg:px-9 lg:py-24"><div className="mx-auto max-w-3xl"><Link href="/blog" className="text-xs font-bold uppercase tracking-[.08em] text-[#ff5a1f]">← All articles</Link><p className="fsg-mono mt-12 text-[10px] uppercase tracking-[.16em] text-black/55">Medical practice growth playbook</p><h1 className="mt-5 text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">{article.title}</h1><p className="mt-8 border-l-4 border-[#ff5a1f] pl-5 text-xl leading-8 text-black/70">{article.intro}</p><div className="mt-12 space-y-10">{article.sections.map((section, index) => <section key={section.heading} className="border-t border-black/15 pt-6"><p className="fsg-mono text-[10px] text-[#ff5a1f]">0{index + 1}</p><h2 className="mt-3 text-2xl font-extrabold tracking-[-.05em] sm:text-3xl">{section.heading}</h2><p className="mt-4 text-lg leading-8 text-black/65">{section.body}</p></section>)}</div><aside className="mt-16 border border-[#101010] bg-[#101010] p-7 text-white sm:p-10"><p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-[#ff8a5d]">Next step / {article.service}</p><h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-[-.06em]">Put this growth system to work for your practice.</h2><p className="mt-4 max-w-xl leading-7 text-white/65">Talk with Five Star Growth about a practical plan matched to your practice, patient journey, and local market.</p><Link href="/contact" className="mt-7 inline-flex bg-[#ff5a1f] px-5 py-3 text-xs font-bold uppercase tracking-[.08em] transition hover:bg-white hover:text-[#101010]">{article.cta} <span className="ml-2">↗</span></Link></aside></div></article>;
+}

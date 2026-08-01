@@ -5,9 +5,9 @@ type ButtonProps = { href?: string; children: React.ReactNode; variant?: "solid"
 
 export function Button({ href = "/contact", children, variant = "solid", className }: ButtonProps) {
   const styles = {
-    solid: "bg-lime text-ink hover:bg-white",
-    outline: "border border-white/25 text-white hover:border-lime hover:text-lime",
-    glow: "bg-sky text-ink shadow-glow hover:bg-lime",
+    solid: "bg-[#101010] text-white hover:bg-[#ff5a1f]",
+    outline: "border border-current text-current hover:bg-[#101010] hover:text-white",
+    glow: "bg-[#ff5a1f] text-white hover:bg-[#101010]",
   };
-  return <Link href={href} className={cn("inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-bold transition", styles[variant], className)}>{children}</Link>;
+  return <Link href={href} className={cn("inline-flex items-center justify-center gap-2 rounded-none px-5 py-3 text-xs font-extrabold uppercase tracking-[.08em] transition", styles[variant], className)}>{children}<span aria-hidden>↗</span></Link>;
 }

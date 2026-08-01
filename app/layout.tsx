@@ -3,6 +3,7 @@ import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { PageTransition } from "@/components/motion/PageTransition";
+import { WhatsAppChat } from "@/components/ui/WhatsAppChat";
 
 export const metadata: Metadata = {
   title: { default: "Five Star Growth | Christchurch Growth Engine", template: "%s | Five Star Growth" },
@@ -10,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en-NZ"><body><Navbar /><PageTransition>{children}</PageTransition><Footer /></body></html>;
+  return <html lang="en-NZ"><body><Navbar /><PageTransition>{children}</PageTransition><Footer /><WhatsAppChat /></body></html>;
 }
