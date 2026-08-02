@@ -134,6 +134,41 @@ export const blogArticles: BlogArticle[] = [
     ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=local-search-fomo&article=local-search-fomo-competitors-win",
     secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
   },
+  {
+    slug: "tradie-business-going-broke-google-search",
+    category: "tradies",
+    title: "The Quiet Way Tradie Businesses Lose Ground: When Google Stops Sending the Right Jobs",
+    audience: "Tradies and field-service owners worried about inconsistent enquiries, rising costs, and competitors taking the jobs they should be winning.",
+    intro: "Most businesses do not lose ground in one dramatic moment. It happens job by job: fewer quote requests, more gaps in the diary, and a competitor becoming the familiar name customers see first on Google.",
+    sections: [
+      { heading: "The danger is an empty pipeline, not a quiet day", body: "Every trade business has slower weeks. The real risk is having no dependable source of new local enquiries when a builder finishes, a referral dries up, or a previous customer has no immediate need. When Google Maps and your website are not working together, your calendar depends too heavily on luck, word of mouth, or last-minute discounting." },
+      { heading: "Why competitors can look busier than better businesses", body: "Customers searching for a plumber, electrician, builder, or repair service usually choose from the businesses they see first. A competitor with current reviews, complete Google Business Profile details, and a clear service page can appear more established—even if your workmanship is stronger. Local search visibility decides who gets the first chance to earn the call." },
+      { heading: "Three signals that protect your flow of job calls", body: "Keep your Google Business Profile accurate and active, build a steady stream of genuine recent reviews, and give each high-value service a fast, mobile-friendly web page with an obvious quote or call action. These are not vanity marketing tasks. They make it easier for ready-to-buy customers to find, trust, and contact your business." },
+      { heading: "Build an asset that works between jobs", body: "A well-maintained local growth system keeps creating opportunities while your team is onsite. It strengthens the path from Google search to enquiry, helps you win a healthier mix of jobs, and reduces the pressure to chase every lead at any price." },
+    ],
+    service: "Local SEO, Smart Websites & Review Automation",
+    cta: "Protect your local job pipeline",
+    ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=tradie-job-pipeline&article=tradie-business-going-broke-google-search",
+    secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
+  },
+  {
+    slug: "from-local-tradie-to-national-brand",
+    category: "tradies",
+    title: "From Local Tradie to National Brand: The Digital Foundation That Lets You Scale Without Losing Leads",
+    audience: "Ambitious tradie and service-business owners who want to grow beyond one suburb or city without their marketing becoming harder to manage.",
+    intro: "Growing beyond your local area takes more than adding vans or hiring another crew. You need a digital foundation that makes every new service area easier to find, easier to trust, and easier to contact.",
+    sections: [
+      { heading: "A bigger team does not automatically create a bigger brand", body: "Many growing tradie businesses hit a ceiling because their online presence is built around one person, one location, or one generic homepage. As new crews, services, and suburbs are added, customers need clear proof that the business is established, available, and capable in their area." },
+      { heading: "Local SEO creates repeatable market entry", body: "Investing in local SEO gives each genuine service area a clear place to compete: accurate Google Business Profile information, locally relevant service pages, consistent business details, and evidence of quality. Instead of hoping people discover you, you create a repeatable system for earning attention where you actually operate." },
+      { heading: "A smart website turns new visibility into capacity", body: "More traffic is only valuable if the right jobs reach the right team. A fast, high-converting website can route quote requests, show the services you want more of, make mobile contact effortless, and give customers confidence before they call. That protects your team from a growth strategy built on low-value enquiries." },
+      { heading: "Reviews make growth feel credible in every new area", body: "When a business expands, new customers do not yet know the name behind the vans. A consistent flow of genuine Google reviews creates transferable trust: visible evidence that customers value the work, communication, and reliability. Review automation makes that proof easier to maintain as job volume grows." },
+      { heading: "Spend with a clear role for every channel", body: "Google Business Profile management earns local visibility, a smart website converts demand, and review automation strengthens trust. Together they form an owned growth asset rather than a series of disconnected marketing expenses. The result is a stronger platform for moving from a respected local business to a recognisable regional or national brand." },
+    ],
+    service: "Scalable Local Growth System",
+    cta: "Plan your next growth stage",
+    ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=tradie-scale&article=from-local-tradie-to-national-brand",
+    secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
+  },
 ];
 
 export function getBlogArticle(slug: string) {
