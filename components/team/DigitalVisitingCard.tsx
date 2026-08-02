@@ -7,7 +7,7 @@ type Props = { card: TeamCard };
 
 export function DigitalVisitingCard({ card }: Props) {
   const cardUrl = `https://fivestargrowth.nz/${card.slug}`;
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&format=svg&margin=8&data=${encodeURIComponent(cardUrl)}`;
+  const qrCodeUrl = card.qrCodeUrl ?? `https://api.qrserver.com/v1/create-qr-code/?size=220x220&format=svg&margin=8&data=${encodeURIComponent(cardUrl)}`;
 
   return (
     <main className="min-h-screen bg-[#f7f7f3] px-4 py-8 text-[#101010] sm:px-6 sm:py-12">

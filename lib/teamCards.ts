@@ -14,6 +14,7 @@ export type TeamCard = {
   linkedInUrl?: string;
   vCardUrl: string;
   imageUrl?: string;
+  qrCodeUrl?: string;
 };
 
 // Add future team members here. The shared DigitalVisitingCard component will
@@ -36,5 +37,6 @@ export const teamCards: Record<string, TeamCard> = {
     linkedInUrl: "https://www.linkedin.com/in/karan-vinayak-81076b8b/",
     vCardUrl: "/contacts/karan-vinayak.vcf",
     imageUrl: "/assets/images/karan-vinayak.png",
+    qrCodeUrl: "/assets/cards/karan-vinayak-digital-card-qr-2000.png",
   },
 };
