@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { CheckCircle2, CircleAlert, Gauge, LoaderCircle, MapPin, Smartphone } from "lucide-react";
+import { deliverFormSubmission } from "@/lib/form-delivery";
 
 const loadingMessages = ["Analyzing page speed...", "Checking Google local presence...", "Calculating conversion score..."];
 
@@ -84,6 +85,7 @@ export function InstantAudit() {
   const [messageIndex, setMessageIndex] = useState(0);
   const [result, setResult] = useState<AuditResult | null>(null);
   const [displayScore, setDisplayScore] = useState(0);
+  const [deliveryError, setDeliveryError] = useState(false);
 
   useEffect(() => {
     if (!isScanning) return;
@@ -136,13 +138,20 @@ export function InstantAudit() {
     setMessageIndex(0);
     setResult(null);
     setDisplayScore(0);
+    setDeliveryError(false);
     setIsScanning(true);
 
-    const [audit] = await Promise.all([
+    const [audit, emailSent] = await Promise.all([
       getAuditResult(website),
       new Promise((resolve) => window.setTimeout(resolve, 3000)),
+      deliverFormSubmission("New Five Star Growth instant website health score", {
+        form_type: "Instant Website & Search Health Score",
+        website,
+        email: String(formData.get("email") ?? ""),
+      }).then(() => true).catch(() => false),
     ]);
     setResult(audit);
+    setDeliveryError(!emailSent);
     setIsScanning(false);
   };
 
@@ -163,6 +172,7 @@ export function InstantAudit() {
               <label><span className="sr-only">Domain URL</span><input required name="website" type="text" inputMode="url" placeholder="practice.co.nz" className="w-full border border-white/25 bg-white/[.04] px-4 py-3 text-sm outline-none placeholder:text-white/45 focus:border-[#ff5a1f]" /></label>
               <label><span className="sr-only">Email address</span><input required name="email" type="email" autoComplete="email" placeholder="Email address" className="w-full border border-white/25 bg-white/[.04] px-4 py-3 text-sm outline-none placeholder:text-white/45 focus:border-[#ff5a1f]" /></label>
               <button disabled={isScanning} type="submit" className="mt-2 inline-flex w-fit items-center justify-center bg-[#ff5a1f] px-5 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-white transition hover:bg-white hover:text-[#101010] disabled:cursor-wait disabled:opacity-70">{isScanning ? "Scanning..." : "Run instant scan"}<span className="ml-2">↗</span></button>
+              {deliveryError && <p role="alert" className="text-sm leading-6 text-[#ff8a5d]">Your score is ready, but we couldn’t send your details. Please email hello@fivestargrowth.nz.</p>}
             </form>
           </div>
 
