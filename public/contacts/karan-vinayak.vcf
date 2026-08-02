@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Vinayak;Karan;;;
+FN:Karan Vinayak
+ORG:Five Star Growth
+TITLE:Director
+TEL;TYPE=CELL:+64204510002
+EMAIL;TYPE=INTERNET:karan@fivestargrowth.nz
+URL:https://fivestargrowth.nz
+ADR;TYPE=WORK:;;27 Tepihopa Way;Aidenfield;Christchurch;;;New Zealand
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/karan-vinayak-81076b8b/
+END:VCARD
