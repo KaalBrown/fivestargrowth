@@ -141,7 +141,7 @@ export function InstantAudit() {
     setDeliveryError(false);
     setIsScanning(true);
 
-    const [audit, emailSent] = await Promise.all([
+    const [audit, , emailSent] = await Promise.all([
       getAuditResult(website),
       new Promise((resolve) => window.setTimeout(resolve, 3000)),
       deliverFormSubmission("New Five Star Growth instant website health score", {
