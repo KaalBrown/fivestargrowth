@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
 import { HeroCardMotion, HeroReveal, HoverPanel, LandingMotionScope, Reveal, Stagger, StaggerItem } from "@/components/motion/LandingMotion";
 import { PricingPacks } from "@/components/sections/PricingPacks";
 import { InstantAudit } from "@/components/sections/InstantAudit";
 import { HeroGrowthAnimation } from "@/components/sections/HeroGrowthAnimation";
-import { localBusinessJsonLd } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
 
 const services = [
   ["01", "Get discovered", "Local SEO that puts you in the searches that matter before the competition does."],
@@ -44,8 +49,6 @@ function Marker({ children }: { children: React.ReactNode }) {
 
 export default function HomePage() {
   return <LandingMotionScope className="fsg-home">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }} />
-
     <section data-motion-managed className="border-b border-black/15">
       <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-6 lg:px-9 lg:pb-16 lg:pt-16">
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-10">
