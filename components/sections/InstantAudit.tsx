@@ -14,6 +14,14 @@ type AuditResult = {
   source: "live" | "estimated" | "verified";
 };
 
+type AuditCheck = {
+  title: string;
+  detail: string;
+  icon: typeof Smartphone;
+  status: string;
+  tone: "green" | "yellow" | "red";
+};
+
 function normaliseUrl(value: string) {
   const trimmed = value.trim();
   return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
@@ -56,6 +64,30 @@ function inspectCurrentSite(value: string) {
   const seo = Math.round((seoChecks.filter(Boolean).length / seoChecks.length) * 100);
   const conversion = Math.round((conversionChecks.filter(Boolean).length / conversionChecks.length) * 100);
   return { seo, conversion, score: Math.round((seo + conversion) / 2) };
+}
+
+function getAuditChecks(result: AuditResult | null): AuditCheck[] {
+  if (!result) return [];
+  if (result.source === "verified") {
+    return [
+      { title: "Speed & Mobile UX", detail: "The site is lightweight and static, but a live PageSpeed run is needed for an independent speed benchmark.", icon: Smartphone, status: "Verify live", tone: "yellow" },
+      { title: "Google Maps & Local SEO Tags", detail: "Canonical URL, metadata, social tags, Christchurch and Canterbury service schema, and service offers are all present.", icon: MapPin, status: "Strong", tone: "green" },
+      { title: "Lead & Review Capture Paths", detail: "Video audit, contact, email, WhatsApp, and instant-scan paths are available for visitors to start an enquiry.", icon: CheckCircle2, status: "Ready", tone: "green" },
+    ];
+  }
+
+  const lowPerformance = result.performance < 60;
+  return lowPerformance
+    ? [
+        { title: "Speed & Mobile UX", detail: "Mobile page experience is slowing down key visitor actions.", icon: Smartphone, status: "Needs Improvement", tone: "red" },
+        { title: "Google Maps & Local SEO Tags", detail: "Local Schema & Meta Tags need attention.", icon: MapPin, status: "Missing Tags", tone: "red" },
+        { title: "Lead & Review Capture Setup", detail: "A visible prompt to start a conversion was not found.", icon: CircleAlert, status: "Not Detected", tone: "yellow" },
+      ]
+    : [
+        { title: "Speed & Mobile UX", detail: "Mobile performance is supporting a better local search experience.", icon: Smartphone, status: "Good", tone: "green" },
+        { title: "Google Maps & Local SEO Tags", detail: result.seo >= 90 ? "Core SEO checks passed. Local schema and metadata should now be validated against your business profile." : "Some local signals are present, with room to strengthen coverage.", icon: MapPin, status: result.seo >= 90 ? "Good" : "Partial", tone: result.seo >= 90 ? "green" : "yellow" },
+        { title: "Lead & Review Capture Setup", detail: "More obvious paths from attention to enquiry are needed.", icon: CircleAlert, status: "Action Required", tone: "red" },
+      ];
 }
 
 async function getAuditResult(url: string): Promise<AuditResult> {
@@ -107,28 +139,7 @@ export function InstantAudit() {
     return () => window.cancelAnimationFrame(frame);
   }, [result]);
 
-  const checks = useMemo(() => {
-    if (!result) return [];
-    if (result.source === "verified") {
-      return [
-        { title: "Speed & Mobile UX", detail: "The site is lightweight and static, but a live PageSpeed run is needed for an independent speed benchmark.", icon: Smartphone, status: "Verify live", tone: "yellow" },
-        { title: "Google Maps & Local SEO Tags", detail: "Canonical URL, metadata, social tags, Christchurch and Canterbury service schema, and service offers are all present.", icon: MapPin, status: "Strong", tone: "green" },
-        { title: "Lead & Review Capture Paths", detail: "Video audit, contact, email, WhatsApp, and instant-scan paths are available for visitors to start an enquiry.", icon: CheckCircle2, status: "Ready", tone: "green" },
-      ];
-    }
-    const lowPerformance = result.performance < 60;
-    return lowPerformance
-      ? [
-          { title: "Speed & Mobile UX", detail: "Mobile page experience is slowing down key visitor actions.", icon: Smartphone, status: "Needs Improvement", tone: "red" },
-          { title: "Google Maps & Local SEO Tags", detail: "Local Schema & Meta Tags need attention.", icon: MapPin, status: "Missing Tags", tone: "red" },
-          { title: "Lead & Review Capture Setup", detail: "A visible prompt to start a conversion was not found.", icon: CircleAlert, status: "Not Detected", tone: "yellow" },
-        ]
-      : [
-          { title: "Speed & Mobile UX", detail: "Mobile performance is supporting a better local search experience.", icon: Smartphone, status: "Good", tone: "green" },
-          { title: "Google Maps & Local SEO Tags", detail: result.seo >= 90 ? "Core SEO checks passed. Local schema and metadata should now be validated against your business profile." : "Some local signals are present, with room to strengthen coverage.", icon: MapPin, status: result.seo >= 90 ? "Good" : "Partial", tone: result.seo >= 90 ? "green" : "yellow" },
-          { title: "Lead & Review Capture Setup", detail: "More obvious paths from attention to enquiry are needed.", icon: CircleAlert, status: "Action Required", tone: "red" },
-        ];
-  }, [result]);
+  const checks = useMemo(() => getAuditChecks(result), [result]);
 
   const startAudit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -150,6 +161,7 @@ export function InstantAudit() {
       performance: audit.performance,
       seo: audit.seo,
       source: audit.source,
+      checks: getAuditChecks(audit).map(({ title, status, detail }) => ({ title, status, detail })),
     });
     setResult(audit);
     setIsScanning(false);

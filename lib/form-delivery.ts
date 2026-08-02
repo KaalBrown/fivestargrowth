@@ -30,6 +30,7 @@ type InstantAuditReport = {
   performance: number;
   seo: number;
   source: "live" | "estimated" | "verified";
+  checks: { title: string; status: string; detail: string }[];
 };
 
 export function deliverInstantAuditReport(report: InstantAuditReport) {
@@ -56,6 +57,9 @@ export function deliverInstantAuditReport(report: InstantAuditReport) {
     performance_score: `${report.performance}%`,
     seo_score: `${report.seo}%`,
     score_source: report.source,
+    speed_mobile_ux: formatCheck(report.checks, "Speed & Mobile UX"),
+    google_maps_local_seo: formatCheck(report.checks, "Google Maps & Local SEO Tags"),
+    lead_review_capture: formatCheck(report.checks, "Lead & Review Capture Setup") || formatCheck(report.checks, "Lead & Review Capture Paths"),
     submitted_from: window.location.href,
   };
 
@@ -76,4 +80,9 @@ export function deliverInstantAuditReport(report: InstantAuditReport) {
   document.body.appendChild(form);
   form.submit();
   window.setTimeout(() => form.remove(), 1000);
+}
+
+function formatCheck(checks: InstantAuditReport["checks"], title: string) {
+  const check = checks.find((item) => item.title === title);
+  return check ? `${check.status} — ${check.detail}` : "Not available";
 }
