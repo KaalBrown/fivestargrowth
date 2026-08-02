@@ -12,7 +12,7 @@ const services = [
 ];
 
 const outcomes = [
-  "Rank Top #3 on Google Maps when local clients search for your services.",
+  "Rank Top #3 on Google Maps when local customers search for your services.",
   "Turn website visitors into daily bookings with high-converting smart layouts.",
   "Automate 5-Star Google Reviews to build unstoppable local trust.",
 ];
@@ -57,10 +57,10 @@ export default function HomePage() {
               <span><span className="fsg-star tracking-[.12em]">★ ★ ★ ★ ★</span><br /><span className="text-[10px] text-black/55">Over $100K+ leads generated in Christchurch</span></span>
             </div>
             <h1 className="fsg-display mt-9 text-[13vw] font-extrabold sm:text-[15vw] lg:mt-12 lg:text-[clamp(6rem,8vw,8.5rem)]">LOCAL<br /><span className="fsg-orange">LEVERAGE</span></h1>
-            <div className="mt-5 max-w-sm md:hidden"><p className="text-lg font-semibold leading-7">We pair a <BrushHighlight>Smart Website</BrushHighlight> with <BrushHighlight>Automated Google Reviews</BrushHighlight> and <BrushHighlight>Maps Ranking</BrushHighlight> systems to fill your calendar with local Christchurch clients.</p></div>
+            <div className="mt-5 max-w-sm md:hidden"><p className="text-lg font-semibold leading-7">Built specifically for local businesses, medical practices, and professional service providers.</p></div>
           </HeroReveal>
           <HeroReveal delay={0.12} className="hidden items-end justify-start pt-2 lg:flex lg:justify-end lg:pb-8">
-            <p className="max-w-[360px] border-l-2 border-[#ff5a1f] pl-5 text-lg font-medium leading-7 tracking-tight">Stop juggling separate tools for <strong><BrushHighlight>Smart Website</BrushHighlight></strong>, <strong><BrushHighlight>Automated Google Reviews</BrushHighlight></strong>, and <strong><BrushHighlight>Maps Ranking</BrushHighlight></strong>. We combine all three into <strong>one automated growth system</strong>.</p>
+            <p className="max-w-[360px] border-l-2 border-[#ff5a1f] pl-5 text-lg font-medium leading-7 tracking-tight">Tired of empty website traffic and missing out on 5-star reviews? We transform your online reputation and turn local searches into paying customers.</p>
           </HeroReveal>
         </div>
 
