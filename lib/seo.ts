@@ -1,7 +1,7 @@
 export const business = {
   name: "Five Star Growth",
   url: "https://fivestargrowth.co.nz",
-  email: "hello@fivestargrowth.co.nz",
+  email: "hello@fivestargrowth.nz",
   city: "Christchurch",
   country: "NZ",
 };

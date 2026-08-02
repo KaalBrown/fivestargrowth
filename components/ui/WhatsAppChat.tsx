@@ -1,4 +1,4 @@
-const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "64000000000").replace(/\D/g, "");
+const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "64204510002").replace(/\D/g, "");
 const message = encodeURIComponent("Hi Five Star Growth, I would like to discuss a growth plan for my business.");
 
 /** Shared WhatsApp entry point. Set NEXT_PUBLIC_WHATSAPP_NUMBER in your deployment environment. */
