@@ -162,6 +162,7 @@ export function InstantAudit() {
       seo: audit.seo,
       source: audit.source,
       checks: getAuditChecks(audit).map(({ title, status, detail }) => ({ title, status, detail })),
+      marketingConsent: formData.get("marketing_consent") === "yes",
     });
     setResult(audit);
     setIsScanning(false);
@@ -183,6 +184,7 @@ export function InstantAudit() {
             <form onSubmit={startAudit} className="mt-8 grid gap-3">
               <label><span className="sr-only">Domain URL</span><input required name="website" type="text" inputMode="url" placeholder="practice.co.nz" className="w-full border border-white/25 bg-white/[.04] px-4 py-3 text-sm outline-none placeholder:text-white/45 focus:border-[#ff5a1f]" /></label>
               <label><span className="sr-only">Email address</span><input required name="email" type="email" autoComplete="email" placeholder="Email address" className="w-full border border-white/25 bg-white/[.04] px-4 py-3 text-sm outline-none placeholder:text-white/45 focus:border-[#ff5a1f]" /></label>
+              <label className="flex cursor-pointer items-start gap-3 pt-1 text-sm text-white/70"><input type="checkbox" name="marketing_consent" value="yes" className="mt-0.5 size-4 accent-[#ff5a1f]" /><span><span className="font-semibold text-white">Send me the occasional useful local growth tip.</span><span className="mt-1 block leading-6 text-white/55">Practical ideas for getting found, earning reviews, and winning more enquiries. No spam—unsubscribe anytime.</span></span></label>
               <button disabled={isScanning} type="submit" className="mt-2 inline-flex w-fit items-center justify-center bg-[#ff5a1f] px-5 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-white transition hover:bg-white hover:text-[#101010] disabled:cursor-wait disabled:opacity-70">{isScanning ? "Scanning..." : "Run instant scan"}<span className="ml-2">↗</span></button>
             </form>
           </div>

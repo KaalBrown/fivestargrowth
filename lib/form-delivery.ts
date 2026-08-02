@@ -31,6 +31,7 @@ type InstantAuditReport = {
   seo: number;
   source: "live" | "estimated" | "verified";
   checks: { title: string; status: string; detail: string }[];
+  marketingConsent: boolean;
 };
 
 export function deliverInstantAuditReport(report: InstantAuditReport) {
@@ -60,6 +61,7 @@ export function deliverInstantAuditReport(report: InstantAuditReport) {
     speed_mobile_ux: formatCheck(report.checks, "Speed & Mobile UX"),
     google_maps_local_seo: formatCheck(report.checks, "Google Maps & Local SEO Tags"),
     lead_review_capture: formatCheck(report.checks, "Lead & Review Capture Setup") || formatCheck(report.checks, "Lead & Review Capture Paths"),
+    marketing_consent: report.marketingConsent ? "Yes — opted in to useful local growth tips" : "No",
     submitted_from: window.location.href,
   };
 
