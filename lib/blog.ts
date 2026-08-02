@@ -1,5 +1,19 @@
+export type BlogCategory = "practices" | "tradies" | "local-businesses";
+
+export const blogFilters: { value: "all" | BlogCategory; label: string }[] = [
+  { value: "all", label: "All" },
+  { value: "practices", label: "Practices" },
+  { value: "tradies", label: "Tradies" },
+  { value: "local-businesses", label: "Local businesses" },
+];
+
+export function getBlogCategoryLabel(category: BlogCategory) {
+  return blogFilters.find((filter) => filter.value === category)?.label ?? "Local businesses";
+}
+
 export type BlogArticle = {
   slug: string;
+  category: BlogCategory;
   title: string;
   audience: string;
   intro: string;
@@ -13,6 +27,7 @@ export type BlogArticle = {
 export const blogArticles: BlogArticle[] = [
   {
     slug: "empty-appointment-slot-killer",
+    category: "practices",
     title: "The Empty Appointment Slot Killer: How Smart Medical Websites Fill Cancellations Automatically",
     audience: "Medical practice owners losing revenue to last-minute patient cancellations.",
     intro: "A cancellation does not have to stay empty. The right website turns urgent, after-hours patient intent into a practical next-day booking opportunity.",
@@ -26,6 +41,7 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "outrank-medical-practice-down-the-road",
+    category: "practices",
     title: "How to Outrank the Medical Practice Down the Road: A Local SEO Blueprint for Clinics",
     audience: "Doctors frustrated that geographic competitors dominate local Google search results.",
     intro: "Local search visibility is not won by chance. It comes from connecting the language patients use with the local proof, service pages, and technical signals Google needs to see.",
@@ -39,6 +55,7 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "patient-trust-engine-automated-reviews",
+    category: "practices",
     title: "The Patient Trust Engine: How Automated Reviews Drive High-Value Appointments Hands-Free",
     audience: "Busy practitioners needing patient reviews without sacrificing time or risking compliance.",
     intro: "Fresh, authentic feedback helps a hesitant new patient feel more confident. The key is having a consistent, considerate way to ask without adding work to the front desk.",
@@ -52,6 +69,7 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "anatomy-high-converting-clinic-page",
+    category: "practices",
     title: "Anatomy of a High-Converting Clinic Page: Why 90% of Medical Websites Lose New Patients",
     audience: "Practices with decent website traffic but low online booking conversion rates.",
     intro: "Getting a visit is only half the job. A clinic page has to answer a worried patient’s practical questions quickly and make the next step feel safe and obvious.",
@@ -65,6 +83,7 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     slug: "competitors-stealing-best-jobs-google-maps",
+    category: "tradies",
     title: "Why Your Competitors Are Stealing Your Best Jobs (And How Google Maps Hides Your Business)",
     audience: "Tradies, local service business owners, and practice managers who are losing high-intent local enquiries to more visible competitors.",
     intro: "The jobs you never get to quote can be the most expensive ones. When a nearby customer searches with a problem in hand, Google Maps often sends them to the businesses that look more relevant, trusted, and ready to help—even when you would have done the better job.",
@@ -79,6 +98,40 @@ export const blogArticles: BlogArticle[] = [
     service: "Local SEO, Smart Websites & Review Automation",
     cta: "Request a free 5-min video audit",
     ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=tradies-google-maps&article=competitors-stealing-best-jobs-google-maps",
+    secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
+  },
+  {
+    slug: "google-business-profile-internet-real-estate",
+    category: "local-businesses",
+    title: "Your Google Business Profile Is Your Most Valuable Internet Real Estate—Here’s How to Own More of It",
+    audience: "Local business owners who want more calls, directions, and enquiries from Google without paying for every click.",
+    intro: "Your Google Business Profile is not a listing to set and forget. It is the piece of online real estate customers see when they are closest to choosing a local business—and the businesses that actively manage it earn more of that attention.",
+    sections: [
+      { heading: "The map result customers see before your website", body: "For many local searches, customers see the map results before they ever reach a traditional website. They compare the businesses shown by category, distance, opening hours, photos, reviews, and simple signs of trust. That makes your Google Business Profile a front door to your business, not a directory entry." },
+      { heading: "How to own more space in local search", body: "Complete every accurate detail: the right primary category, useful services, up-to-date hours, service areas, photos, descriptions, and clear contact options. Keep your information consistent with your website. Each improvement helps Google understand the offer and helps a customer decide without hunting for answers." },
+      { heading: "Fresh proof beats an old, polished profile", body: "Recent reviews, regular photos, and prompt, helpful responses tell customers the business is active now. The aim is not to game Google; it is to make real service quality easier to verify. A profile that answers practical questions earns more confidence than one that looks untouched." },
+      { heading: "Connect the listing to a website that converts", body: "The click after a Maps result matters. A clear service page, local context, fast mobile experience, and obvious phone or enquiry path help turn profile attention into a booking, job call, or quote request. Local visibility works best when the profile and website support the same next step." },
+    ],
+    service: "Google Business Profile & Local SEO",
+    cta: "Request a free 5-min video audit",
+    ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=google-business-profile&article=google-business-profile-internet-real-estate",
+    secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
+  },
+  {
+    slug: "local-search-fomo-competitors-win",
+    category: "local-businesses",
+    title: "Every Local Search You Miss Is a Customer Your Competitor Gets First",
+    audience: "Local business owners who know their service is good but are tired of being overlooked online.",
+    intro: "The painful part of weak local visibility is not a low ranking report. It is the steady stream of people who need exactly what you offer, choose a more visible competitor, and never discover you were an option.",
+    sections: [
+      { heading: "Local customers rarely scroll forever", body: "When someone has a burst pipe, a sore back, a cancelled appointment, or a job that needs doing, they want a trustworthy answer quickly. They usually compare a short list of nearby options. If your business is absent, unclear, or looks less current than the others, the opportunity moves on fast." },
+      { heading: "Visibility without trust still loses the call", body: "Getting seen is only the first part. A thin profile, stale reviews, and a slow website can make a customer hesitate at the last moment. The most visible competitor often wins because their proof is easier to see and their next step is easier to take." },
+      { heading: "The cost compounds while you wait", body: "One missed enquiry may not sound dramatic, but the effect repeats across searches, weeks, and months. A competitor gains the job, the review, the referral, and the next ranking signal. Building local visibility now creates an asset that helps you compete for the searches that will happen tomorrow too." },
+      { heading: "Make choosing you feel like the obvious move", body: "Start by making your local offer clear, your reviews current, and your website fast and conversion-focused. Those improvements give customers fewer reasons to leave and give Google stronger evidence that your business is a credible result for the area." },
+    ],
+    service: "Local Growth System",
+    cta: "Request a free 5-min video audit",
+    ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=local-search-fomo&article=local-search-fomo-competitors-win",
     secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
   },
 ];

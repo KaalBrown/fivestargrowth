@@ -47,8 +47,8 @@ export default function HomePage() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }} />
 
     <section data-motion-managed className="border-b border-black/15">
-      <div className="mx-auto max-w-[1440px] px-5 pb-16 pt-8 lg:px-9 lg:pb-20 lg:pt-20">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-10">
+      <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-6 lg:px-9 lg:pb-16 lg:pt-16">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-10">
           <HeroReveal>
             <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[.08em]">
               <div className="flex -space-x-2">
@@ -56,18 +56,18 @@ export default function HomePage() {
               </div>
               <span><span className="fsg-star tracking-[.12em]">★ ★ ★ ★ ★</span><br /><span className="text-[10px] text-black/55">Over $100K+ leads generated in Christchurch</span></span>
             </div>
-            <h1 className="mt-9 max-w-5xl text-5xl font-extrabold leading-[.84] tracking-[-.085em] sm:text-7xl lg:mt-12 lg:text-[clamp(4.75rem,6.5vw,7.5rem)]"><span className="block">The All-In-One</span><span className="block fsg-orange">Local Growth</span><span className="block">Smart Engine</span></h1>
-            <div className="mt-6 max-w-xl md:hidden"><p className="border-l-2 border-[#ff5a1f] pl-4 text-lg font-semibold leading-7">Tired of empty website traffic and bad Google search standing? We transform your online reputation and turn local searches into paying customers.</p></div>
+            <h1 className="mt-7 max-w-5xl text-[2.7rem] font-extrabold leading-[.84] tracking-[-.085em] sm:text-6xl lg:mt-10 lg:text-[clamp(3.75rem,5.5vw,6.25rem)]"><span className="block">The All-In-One</span><span className="block fsg-orange">Local Growth</span><span className="block">Smart Engine</span></h1>
+            <div className="mt-5 max-w-xl md:hidden"><p className="border-l-2 border-[#ff5a1f] pl-4 text-base font-semibold leading-6">Tired of empty website traffic and bad Google search standing? We transform your online reputation and turn local searches into paying customers.</p></div>
           </HeroReveal>
           <HeroReveal delay={0.12} className="hidden items-end justify-start pt-2 lg:flex lg:justify-end lg:pb-8">
             <p className="max-w-[360px] border-l-2 border-[#ff5a1f] pl-5 text-lg font-medium leading-7 tracking-tight">Tired of empty website traffic and bad Google search standing? We transform your online reputation and turn local searches into paying customers.</p>
           </HeroReveal>
         </div>
 
-        <div className="relative mx-auto mt-0 max-w-4xl pb-4 sm:mt-2 lg:mt-6">
+        <div className="relative mx-auto mt-0 max-w-4xl pb-2 sm:mt-2 lg:mt-6">
           <HeroCardMotion className="fsg-hero-card relative w-full max-w-full bg-[#101010] p-4 text-white sm:p-7">
             <div className="hidden items-start justify-between border-b border-white/20 pb-12 sm:flex"><span className="fsg-mono text-[10px] uppercase tracking-[.16em] text-white/60">Five Star Growth / 01</span><span className="text-[#ff5a1f]">✦</span></div>
-            <div className="grid gap-5 py-2 sm:grid-cols-[minmax(0,1fr)_290px] sm:items-center sm:gap-8 sm:py-8"><div><h2 className="max-w-lg break-words text-[1.65rem] font-extrabold leading-[.91] tracking-[-.07em] sm:text-[clamp(2rem,5vw,3rem)] sm:leading-[.95]">Turn everyday Google searches into booked appointments and lifelong clients.</h2></div><HeroGrowthAnimation /></div>
+            <div className="grid gap-4 py-1 sm:grid-cols-[minmax(0,1fr)_290px] sm:items-center sm:gap-8 sm:py-8"><div><h2 className="max-w-lg break-words text-[1.4rem] font-extrabold leading-[.91] tracking-[-.07em] sm:text-[clamp(2rem,5vw,3rem)] sm:leading-[.95]">Turn everyday Google searches into booked appointments and lifelong clients.</h2></div><HeroGrowthAnimation /></div>
             <div className="hidden flex-wrap items-center justify-between gap-4 border-t border-white/20 pt-5 md:flex"><span className="text-xs text-white/55">Built to compound, not just look busy.</span><a href="#pricing" className="inline-flex min-h-11 items-center justify-center border border-white/70 px-6 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-white transition hover:bg-white hover:text-[#101010]">Plans ↘</a></div>
           </HeroCardMotion>
           <div className="mt-6 mb-8 text-center md:hidden"><a href="#pricing" className="inline-flex min-h-11 items-center justify-center border border-[#101010] bg-[#f7f7f3] px-6 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-[#101010] transition hover:bg-[#101010] hover:text-white">Plans ↘</a></div>
