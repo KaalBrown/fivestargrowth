@@ -19,8 +19,8 @@ export function DigitalVisitingCard({ card }: Props) {
         <section className="mt-5 overflow-hidden border border-black/15 bg-[#101010] p-6 text-white shadow-[12px_12px_0_#ff5a1f] sm:p-9">
           <p className="fsg-mono text-[10px] uppercase tracking-[.22em] text-[#ff7a48]">Digital visiting card</p>
           <div className="mt-8 flex items-center gap-5">
-            <div className="flex size-20 shrink-0 items-center justify-center rounded-full border-2 border-[#ff5a1f] bg-[#f7f7f3] text-xl font-extrabold tracking-[-.08em] text-[#101010]">
-              {card.initials}
+            <div className="size-20 shrink-0 overflow-hidden rounded-full border-2 border-[#ff5a1f] bg-[#f7f7f3] text-xl font-extrabold tracking-[-.08em] text-[#101010]">
+              {card.imageUrl ? <img src={card.imageUrl} alt={card.name} className="size-full object-cover object-center" /> : <span className="flex size-full items-center justify-center">{card.initials}</span>}
             </div>
             <div>
               <h1 className="text-3xl font-extrabold tracking-[-.06em] sm:text-4xl">{card.name}</h1>

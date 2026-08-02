@@ -13,6 +13,7 @@ export type TeamCard = {
   mapsUrl: string;
   linkedInUrl?: string;
   vCardUrl: string;
+  imageUrl?: string;
 };
 
 // Add future team members here. The shared DigitalVisitingCard component will
@@ -34,5 +35,6 @@ export const teamCards: Record<string, TeamCard> = {
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=27%20Tepihopa%20Way%2C%20Aidenfield%2C%20Christchurch",
     linkedInUrl: "https://www.linkedin.com/in/karan-vinayak-81076b8b/",
     vCardUrl: "/contacts/karan-vinayak.vcf",
+    imageUrl: "/assets/images/karan-vinayak.png",
   },
 };
