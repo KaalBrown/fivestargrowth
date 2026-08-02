@@ -6,6 +6,8 @@ export type BlogArticle = {
   sections: { heading: string; body: string }[];
   service: string;
   cta: string;
+  ctaHref?: string;
+  secondaryCta?: { label: string; href: string };
 };
 
 export const blogArticles: BlogArticle[] = [
@@ -60,6 +62,24 @@ export const blogArticles: BlogArticle[] = [
     ],
     service: "Smart Website Framework",
     cta: "Audit your clinic page",
+  },
+  {
+    slug: "competitors-stealing-best-jobs-google-maps",
+    title: "Why Your Competitors Are Stealing Your Best Jobs (And How Google Maps Hides Your Business)",
+    audience: "Tradies, local service business owners, and practice managers who are losing high-intent local enquiries to more visible competitors.",
+    intro: "The jobs you never get to quote can be the most expensive ones. When a nearby customer searches with a problem in hand, Google Maps often sends them to the businesses that look more relevant, trusted, and ready to help—even when you would have done the better job.",
+    sections: [
+      { heading: "The jobs you never get a chance to quote", body: "A homeowner searching for an emergency plumber, a practice manager looking for a local supplier, or a patient needing a nearby service is not casually browsing. They are ready to act. If your business is hard to find in that moment, the call goes to a competitor before you even know the opportunity existed. That is why local SEO for tradies is about far more than website traffic: it is about protecting the jobs already being searched for in your area." },
+      { heading: "The Google Local 3-Pack decides the first calls", body: "The Google Local 3-Pack is the small group of map listings shown near the top of many local searches. It gives customers a fast way to compare nearby options, ratings, opening hours, and directions. Most businesses miss out because Google cannot clearly see consistent local relevance, strong recent proof, and a useful destination page behind their listing. Learning how to rank on Google Maps starts with making those signals easy for both Google and customers to trust." },
+      { heading: "Costly mistake #1: an incomplete Google Business Profile", body: "An unfinished profile makes your business harder to understand and easier to pass over. Missing services, vague categories, old photos, inaccurate hours, unanswered questions, or weak location details all reduce confidence. A complete, actively maintained Google Business Profile gives local customers the practical information they need to choose you and gives Google clearer evidence of what you do and where you serve." },
+      { heading: "Costly mistake #2: no recent five-star review momentum", body: "Ten good reviews from years ago do not create the same confidence as a steady flow of recent, genuine feedback. Customers notice recency, volume, and how a business responds. Review velocity is not about forcing reviews; it is about making a timely, straightforward request after a good job so your current service quality is visible when people compare options." },
+      { heading: "Costly mistake #3: a website with no local proof behind it", body: "A slow, outdated site with generic copy leaves Google and customers guessing. Clear service pages, local area context, prominent contact paths, and appropriate local schema markup help search engines connect your business to the work people are searching for. They also make it easier for a visitor to move from a Maps listing to a phone call, job request, or booking." },
+      { heading: "Turn local searches into daily booked calls", body: "Fixing these three gaps creates a connected system: a stronger listing earns attention, fresh reviews build trust, and a conversion-focused website gives customers a clear next step. That is how better local search visibility becomes more than a ranking report—it becomes more qualified calls and more jobs in the calendar." },
+    ],
+    service: "Local SEO, Smart Websites & Review Automation",
+    cta: "Request a free 5-min video audit",
+    ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=tradies-google-maps&article=competitors-stealing-best-jobs-google-maps",
+    secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
   },
 ];
 
