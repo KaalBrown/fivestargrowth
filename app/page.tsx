@@ -3,7 +3,9 @@ import { HeroCardMotion, HeroReveal, HoverPanel, LandingMotionScope, Reveal, Sta
 import { PricingPacks } from "@/components/sections/PricingPacks";
 import { InstantAudit } from "@/components/sections/InstantAudit";
 import { BrushHighlight } from "@/components/ui/BrushHighlight";
+import { VideoAuditRequestButton } from "@/components/ui/VideoAuditRequestButton";
 import { localBusinessJsonLd } from "@/lib/seo";
+import { Suspense } from "react";
 
 const services = [
   ["01", "Get discovered", "Local SEO that puts you in the searches that matter before the competition does."],
@@ -56,18 +58,19 @@ export default function HomePage() {
               </div>
               <span><span className="fsg-star tracking-[.12em]">★ ★ ★ ★ ★</span><br /><span className="text-[10px] text-black/55">Over $100K+ leads generated in Christchurch</span></span>
             </div>
-            <h1 className="fsg-display mt-9 text-[13vw] font-extrabold sm:text-[15vw] lg:mt-12 lg:text-[clamp(6rem,8vw,8.5rem)]">LOCAL<br /><span className="fsg-orange">LEVERAGE</span></h1>
-            <div className="mt-5 max-w-sm md:hidden"><p className="text-lg font-semibold leading-7">Built specifically for local businesses, medical practices, and professional service providers.</p></div>
+            <p className="mt-9 inline-flex rounded-full border border-[#ff5a1f] px-3 py-2 text-[10px] font-extrabold uppercase tracking-[.16em] text-[#ff5a1f] lg:mt-12">Automated local marketing</p>
+            <h1 className="mt-5 max-w-5xl text-4xl font-extrabold leading-[.9] tracking-[-.075em] sm:text-6xl lg:text-7xl">The All-In-One Local Growth Smart Engine</h1>
+            <div className="mt-6 flex max-w-5xl flex-col items-start gap-3 text-lg font-extrabold tracking-[-.035em] sm:flex-row sm:flex-wrap sm:gap-x-7 sm:gap-y-4 lg:text-xl"><BrushHighlight>Smart Website</BrushHighlight><BrushHighlight>Automated Google Reviews</BrushHighlight><BrushHighlight>Maps Ranking</BrushHighlight></div>
+            <p className="mt-6 max-w-3xl text-lg font-semibold leading-7 sm:text-xl sm:leading-8">Turn everyday Google searches into booked appointments and paying clients. Built for local businesses, medical practices, and professional service providers.</p>
+            <div className="mt-7"><Suspense fallback={<a href="/contact?reason=video-audit&cta=hero" className="inline-flex items-center justify-center bg-[#ff5a1f] px-5 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-white">Request 5-min video audit ↗</a>}><VideoAuditRequestButton source="hero" className="rounded-none">Request 5-min video audit ↗</VideoAuditRequestButton></Suspense><p className="mt-2 text-xs text-black/55">🔒 100% Free · No credit card required · Zero sales pressure</p></div>
           </HeroReveal>
-          <HeroReveal delay={0.12} className="hidden items-end justify-start pt-2 lg:flex lg:justify-end lg:pb-8">
-            <p className="max-w-[360px] border-l-2 border-[#ff5a1f] pl-5 text-lg font-medium leading-7 tracking-tight">Tired of empty website traffic and missing out on 5-star reviews? We transform your online reputation and turn local searches into paying customers.</p>
-          </HeroReveal>
+          <HeroReveal delay={0.12} className="hidden items-end justify-start pt-2 lg:flex lg:justify-end lg:pb-8"><p className="max-w-[360px] border-l-2 border-[#ff5a1f] pl-5 text-lg font-medium leading-7 tracking-tight">Tired of empty website traffic and missing out on 5-star reviews? We transform your online reputation and turn local searches into paying customers.</p></HeroReveal>
         </div>
 
         <div className="relative mx-auto mt-0 max-w-4xl pb-4 sm:mt-2 lg:mt-6">
           <HeroCardMotion className="fsg-hero-card relative w-full max-w-full bg-[#101010] p-4 text-white sm:p-7">
             <div className="hidden items-start justify-between border-b border-white/20 pb-12 sm:flex"><span className="fsg-mono text-[10px] uppercase tracking-[.16em] text-white/60">Five Star Growth / 01</span><span className="text-[#ff5a1f]">✦</span></div>
-            <div className="grid gap-4 py-2 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-6 sm:py-8"><div><p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-[#ff8a5d]">Your growth operating system</p><h2 className="mt-2 max-w-lg break-words text-[1.65rem] font-extrabold leading-[.91] tracking-[-.07em] sm:mt-3 sm:text-[clamp(2rem,9vw,3rem)] sm:leading-[.95]">Turn everyday Google searches into booked appointments and lifelong clients.</h2></div><div className="hidden border-l border-white/20 pl-5 text-sm text-white/70 sm:block"><p>SMART WEBSITE</p><p className="mt-2">REVIEW AUTOMATION</p><p className="mt-2">FIRST CHOICE</p></div></div>
+            <div className="grid gap-4 py-2 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-6 sm:py-8"><div><p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-[#ff8a5d]">Your growth operating system</p><h2 className="mt-2 max-w-2xl break-words text-[1.65rem] font-extrabold leading-[.91] tracking-[-.07em] sm:mt-3 sm:text-[clamp(2rem,5vw,3rem)] sm:leading-[.95]">Tired of empty website traffic and missing out on 5-star reviews? We transform your online reputation and turn local searches into paying customers.</h2></div><div className="hidden border-l border-white/20 pl-5 text-sm text-white/70 sm:block"><p>SMART WEBSITE</p><p className="mt-2">REVIEW AUTOMATION</p><p className="mt-2">FIRST CHOICE</p></div></div>
             <div className="hidden flex-wrap items-center justify-between gap-4 border-t border-white/20 pt-5 md:flex"><span className="text-xs text-white/55">Built to compound, not just look busy.</span><a href="#pricing" className="inline-flex min-h-11 items-center justify-center border border-white/70 px-6 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-white transition hover:bg-white hover:text-[#101010]">Plans ↘</a></div>
           </HeroCardMotion>
           <div className="mt-6 mb-8 text-center md:hidden"><a href="#pricing" className="inline-flex min-h-11 items-center justify-center border border-[#101010] bg-[#f7f7f3] px-6 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-[#101010] transition hover:bg-[#101010] hover:text-white">Plans ↘</a></div>
