@@ -169,6 +169,24 @@ export const blogArticles: BlogArticle[] = [
     ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=tradie-scale&article=from-local-tradie-to-national-brand",
     secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
   },
+  {
+    slug: "reputation-management-five-star-growth",
+    category: "local-businesses",
+    title: "Reputation Management: How Five Star Growth Can Help.",
+    audience: "Local businesses, practices, and tradies who know great service is not enough if Google shows too little proof—or the wrong first impression.",
+    intro: "Before a local customer calls, they look for a reason to trust you. If your reviews are old, unanswered, or buried under a competitor’s stronger proof, the job can be lost before you ever get a chance to quote it.",
+    sections: [
+      { heading: "Your reputation is making the first sales call", body: "A customer searching on Google does not see your workmanship first. They see ratings, review recency, photos, responses, and whether your business looks active. When that proof is weak, even a great local business can look like the riskier choice beside a competitor with fresh five-star feedback." },
+      { heading: "The quiet cost of letting reviews go stale", body: "Old reviews do not tell a customer what your business is like today. If happy customers are never asked for feedback, one disappointing review can become the loudest story on your profile. The result is not always an angry complaint—it is often a silent customer who chooses someone else." },
+      { heading: "A missed review is more than a missed compliment", body: "Every genuine positive review can strengthen trust at the moment a customer compares options. It can also give you useful feedback about what people value most. Leaving review collection to memory or a busy team member means that proof arrives inconsistently, if it arrives at all." },
+      { heading: "Make good service easier to see", body: "Five Star Growth helps local businesses create a practical review system: timely requests after a completed job or appointment, simple routes for customers to leave feedback, and a clearer process for monitoring and responding. It is designed to make your current service quality visible without adding another daily task to the team." },
+      { heading: "Protect the trust you have worked hard to earn", body: "Reputation management is not about pretending every customer is happy. It is about responding professionally, learning from genuine feedback, and making sure the many good experiences are not invisible. A steady flow of authentic, recent proof makes it easier for local customers to choose you with confidence." },
+    ],
+    service: "Review Automation & Local Trust",
+    cta: "Strengthen your local trust signals",
+    ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=reputation-management&article=reputation-management-five-star-growth",
+    secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
+  },
 ];
 
 export function getBlogArticle(slug: string) {
