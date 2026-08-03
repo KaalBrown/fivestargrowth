@@ -183,7 +183,7 @@ export function InstantAudit() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid gap-8 border-b border-black/20 pb-10 lg:grid-cols-[.7fr_1.3fr]">
           <p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-[#ff5a1f]">Automated site diagnostic</p>
-          <div><h2 className="max-w-4xl text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">Instant 30-Second Website &amp; Search Health Score</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-black/60">Not ready for a personalised review yet? Run a quick automated health check first. Enter your domain below to instantly test page speed, local search tags, and conversion readiness.</p></div>
+          <div><h2 className="max-w-4xl text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">Check if you need a Smart Website now.</h2><p className="mt-5 text-xl font-extrabold tracking-[-.04em] text-black/75">Instant 30-Second Website &amp; Search Health Score</p><p className="mt-3 max-w-2xl text-lg leading-8 text-black/60">Enter your domain below to instantly test page speed, local search tags, and conversion readiness.</p></div>
         </div>
 
         <div className="mt-12 grid overflow-hidden border border-black/20 bg-[#101010] text-white lg:grid-cols-[.9fr_1.1fr]">
