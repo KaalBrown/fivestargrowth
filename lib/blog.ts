@@ -14,15 +14,20 @@ export function getBlogCategoryLabel(category: BlogCategory) {
 export type BlogArticle = {
   slug: string;
   category: BlogCategory;
+  categories?: BlogCategory[];
   title: string;
   audience: string;
   intro: string;
-  sections: { heading: string; body: string }[];
+  sections: { heading: string; body: string; sources?: { label: string; href: string }[] }[];
   service: string;
   cta: string;
   ctaHref?: string;
   secondaryCta?: { label: string; href: string };
 };
+
+export function getBlogArticleCategories(article: BlogArticle) {
+  return article.categories ?? [article.category];
+}
 
 export const blogArticles: BlogArticle[] = [
   {
@@ -172,6 +177,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "reputation-management-five-star-growth",
     category: "local-businesses",
+    categories: ["practices", "tradies", "local-businesses"],
     title: "Reputation Management: How Five Star Growth Can Help.",
     audience: "Local businesses, practices, and tradies who know great service is not enough if Google shows too little proof—or the wrong first impression.",
     intro: "Before a local customer calls, they look for a reason to trust you. If your reviews are old, unanswered, or buried under a competitor’s stronger proof, the job can be lost before you ever get a chance to quote it.",
@@ -185,6 +191,31 @@ export const blogArticles: BlogArticle[] = [
     service: "Review Automation & Local Trust",
     cta: "Strengthen your local trust signals",
     ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=reputation-management&article=reputation-management-five-star-growth",
+    secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
+  },
+  {
+    slug: "reputation-management-statistics",
+    category: "local-businesses",
+    categories: ["practices", "tradies", "local-businesses"],
+    title: "11 Reputation Management Statistics You Need to Know",
+    audience: "Local business owners, practice managers, and tradies who need a clear reason to take reviews and online trust seriously.",
+    intro: "A weak reputation is not always loud. Often, it is a customer quietly choosing a better-reviewed competitor. These third-party figures show why fresh, authentic feedback should be treated as a growth asset—not an afterthought.",
+    sections: [
+      { heading: "1. Google holds a huge share of online reviews", body: "One widely cited estimate says 73% of online reviews sit on Google. For a local business, that makes a neglected Google Business Profile hard to ignore.", sources: [{ label: "Source: TrueList", href: "https://truelist.co/blog/reputation-management-statistics/" }] },
+      { heading: "2. Many customers will review when they are asked", body: "A reported 70% of consumers say they would post a review if asked. The gap is often not customer satisfaction—it is having a simple, timely request process.", sources: [{ label: "Source: TechReport", href: "https://techreport.com/statistics/finance-marketing/reputation-management-statistics/" }] },
+      { heading: "3. Reviews can carry the weight of a recommendation", body: "One study reports that 85% of consumers trust online reviews as much as personal recommendations. If your proof is thin, a searcher may give that trust to a competitor instead.", sources: [{ label: "Source: Reputation X", href: "https://www.reputationx.com/blog/online-reputation-management-statistics" }] },
+      { heading: "4. Most customers check reviews before buying", body: "A reported 89% of customers read reviews before a purchase. Your service may be excellent, but a new customer cannot see that without current, credible feedback.", sources: [{ label: "Source: TrueList", href: "https://truelist.co/blog/reputation-management-statistics/" }] },
+      { heading: "5. Customers compare more than one opinion", body: "Some research suggests consumers read around seven reviews before deciding. That is why one isolated five-star review is rarely enough to make a business feel like the safe choice.", sources: [{ label: "Source: TechReport", href: "https://techreport.com/statistics/finance-marketing/reputation-management-statistics/" }] },
+      { heading: "6. The four-star line matters", body: "One reported figure says 49% of consumers require at least a four-star rating before using a business. Even a small rating gap can change whether a prospect calls you or keeps searching.", sources: [{ label: "Source: Reputation X", href: "https://www.reputationx.com/blog/online-reputation-management-statistics" }] },
+      { heading: "7. Review recency changes the story", body: "A frequently cited figure says 86% of consumers focus on reviews from the past three months. Great feedback from years ago is useful—but it does not prove what your business feels like today.", sources: [{ label: "Source: TrueList", href: "https://truelist.co/blog/reputation-management-statistics/" }] },
+      { heading: "8. Negative comments can stop a customer cold", body: "One survey reports that 60% of consumers may turn away from a brand with negative online comments. A professional response cannot erase the issue, but silence can make it look worse.", sources: [{ label: "Source: TechReport", href: "https://techreport.com/statistics/finance-marketing/reputation-management-statistics/" }] },
+      { heading: "9. One bad review can have an outsized impact", body: "A widely repeated estimate puts the potential loss from a single negative review at 22% of business. Treat this as a warning, not a prediction: the right response and fresh genuine feedback can reduce the damage.", sources: [{ label: "Source: TrueList", href: "https://truelist.co/blog/reputation-management-statistics/" }] },
+      { heading: "10. Rebuilding trust takes time", body: "One estimate suggests roughly 40 positive customer experiences may be needed to offset the impact of one negative review. It is far cheaper to consistently ask happy customers for feedback than to wait for a problem to dominate your profile.", sources: [{ label: "Source: TrueList", href: "https://truelist.co/blog/reputation-management-statistics/" }] },
+      { heading: "11. Reputation can affect hiring too", body: "A reported 69% of applicants would reject a job offer from a business with a bad reputation, even when unemployed. Trust influences customers first, but it can also influence the people you need to grow.", sources: [{ label: "Source: Reputation X", href: "https://www.reputationx.com/blog/online-reputation-management-statistics" }] },
+    ],
+    service: "Review Automation & Reputation Management",
+    cta: "Build stronger local trust",
+    ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=reputation-statistics&article=reputation-management-statistics",
     secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
   },
 ];
