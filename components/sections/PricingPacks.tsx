@@ -1,89 +1,10 @@
-"use client";
-
-import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { MapPin, MonitorSmartphone, Rocket, Share2, Star } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
-type ContractType = "sixMonth" | "monthly";
-
 const plans = [
-  {
-    name: "Starter Pack",
-    price: "$99/mo",
-    tagline: "Essential online foundation and lead capture for local businesses, tradies, and practices.",
-    features: (contract: ContractType) => [
-      `Custom Smart Website Included (${contract === "sixMonth" ? "Free on 6-month term" : "$300 setup on no-contract"})`,
-      "Direct WhatsApp Lead Capture Widget setup",
-      "Monthly Google Business Profile tune-ups & local SEO",
-      "Monthly search standing & performance reports",
-    ],
-    cta: "GET STARTED WITH STARTER",
-  },
-  {
-    name: "Growth Pack",
-    price: "$139/mo",
-    tagline: "Our flagship engine designed to rank #1 on Google Maps and automate 5-star reviews.",
-    features: () => [
-      "Includes EVERYTHING in Starter Pack",
-      "Automated 5-Star Google Review Generation Engine",
-      "1 tailored SEO blog post for your business, service area, or practice published monthly",
-      "Advanced Google Maps ranking & review acceleration",
-    ],
-    cta: "CLAIM GROWTH ENGINE",
-    featured: true,
-  },
-  {
-    name: "Custom / Fully Managed",
-    price: "Custom / Flexible",
-    tagline: "End-to-end growth support for businesses, tradies, and practices wanting complete social and web management.",
-    features: () => [
-      "Full Social Media Management (turning customer, team, and project photos plus Google reviews into regular posts)",
-      "Custom lead capture, booking, and job scheduling integrations",
-      "Dedicated 1-on-1 monthly strategy partner",
-    ],
-    cta: "BOOK A STRATEGY CALL",
-  },
+  { title: "Smart Website Pack", price: "$99/mo + GST", subtitle: "Perfect for anyone who just wants a fully customized and optimized mobile-friendly website.", features: ["Custom Web Design", "Mobile Optimization", "Fast Hosting & Updates", "Basic Analytics", "Dedicated Support"], button: "Get The Pack", href: "/contact?reason=video-audit&cta=pricing-smart-website", color: "#b9380a", icon: MonitorSmartphone },
+  { title: "Trust Engine", price: "$250/mo + GST", subtitle: "Perfect for small family owned business looking for more 5-star Google reviews and more map presence.", highlight: "Includes Website + Review Automation", features: ["Google Maps Optimization (GBP)", "Automated Google Reviews", "Review Widget", "Basic Citation Building"], button: "Build Trust", href: "/contact?reason=video-audit&cta=pricing-trust-engine", color: "#0f6b4f", icon: MapPin },
+  { title: "Growth Engine", price: "$350/mo + GST", subtitle: "Perfect for growing teams wanting reliable leads from Google Maps & Search.", highlight: "Includes Website + Reviews + SEO", features: ["High-Conversion Local SEO", "Keyword Optimization", "Monthly Reporting", "Advanced GBP Strategy"], button: "Scale Fast", href: "/contact?reason=video-audit&cta=pricing-growth-engine", color: "#1d5f9e", icon: Rocket },
 ];
 
-export function PricingPacks() {
-  const [contract, setContract] = useState<ContractType>("sixMonth");
-  const isSixMonth = contract === "sixMonth";
-  const reduceMotion = useReducedMotion();
-
-  return (
-    <section id="pricing" className="px-5 py-16 lg:px-9 lg:py-24">
-      <div className="mx-auto max-w-[1440px]">
-        <div className="grid gap-8 lg:grid-cols-2">
-          <div>
-            <p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-black/55">Ways to work / 08</p>
-            <h2 className="mt-4 text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">Plans built for local growth.</h2>
-          </div>
-          <p className="max-w-md self-end text-lg leading-7 text-black/60">Whether you run a trade, a practice, or a local service business, each offer gives you a practical place to start.</p>
-        </div>
-
-        <div className="mt-12 border border-black/20 bg-[#e7e4dd] p-4 sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-5">
-          <div>
-            {isSixMonth && <span className="inline-flex bg-[#ff5a1f] px-2 py-1 text-[10px] font-extrabold uppercase tracking-[.12em] text-white">Recommended (Best Value)</span>}
-            <p className="mt-2 text-lg font-extrabold tracking-[-.04em]">{isSixMonth ? "$0 Setup Fee + FREE Custom Smart Website Included" : "$300 One-off Setup Fee (or $0 setup if connecting an existing site)"}</p>
-            <p className="mt-1 text-sm text-black/60">{isSixMonth ? "6-month agreement" : "Month-to-month option"}</p>
-          </div>
-          <motion.button type="button" onClick={() => setContract(isSixMonth ? "monthly" : "sixMonth")} aria-pressed={!isSixMonth} whileHover={reduceMotion ? undefined : { y: -2 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} className="mt-4 inline-flex border border-black bg-[#f7f7f3] px-4 py-3 text-xs font-extrabold uppercase tracking-[.08em] transition hover:bg-black hover:text-white sm:mt-0">{isSixMonth ? "Need No Contract? View Month-to-Month Rates" : "View 6-Month Best Value Rates"}</motion.button>
-        </div>
-
-        <AnimatePresence mode="wait"><motion.div key={contract} className="mt-4 grid gap-4 lg:grid-cols-3" initial={reduceMotion ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={reduceMotion ? undefined : { opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>{plans.map((plan, index) => (
-            <motion.article key={plan.name} layout whileHover={reduceMotion ? undefined : { y: -7 }} transition={{ duration: 0.25, delay: reduceMotion ? 0 : index * 0.07 }} className={`flex min-h-[500px] flex-col border p-6 ${plan.featured ? "border-[#ff5a1f] bg-[#ff5a1f] text-white" : "border-black/20"}`}>
-              <p className="fsg-mono text-[10px] uppercase tracking-[.16em] opacity-65">0{index + 1} / {plan.name}</p>
-              <h3 className="mt-7 text-3xl font-extrabold leading-tight tracking-[-.07em]">{plan.price}</h3>
-              <p className="mt-3 max-w-xs leading-7 opacity-75">{plan.tagline}</p>
-              <ul className="mt-9 space-y-3 border-t border-current/20 pt-5 text-sm leading-6">
-                {plan.features(contract).map((feature) => <li key={feature}>✦ {feature}</li>)}
-              </ul>
-              <Button className={`mt-auto w-full ${plan.featured ? "border-white text-white hover:bg-white hover:text-[#101010]" : ""}`} variant={plan.featured ? "outline" : "solid"}>{plan.cta}</Button>
-            </motion.article>
-          ))}</motion.div></AnimatePresence>
-
-        <p className="mt-5 max-w-4xl text-xs leading-5 text-black/50">* All plans include ongoing website hosting, speed updates, and technical maintenance. $0 setup fee requires a 6-month agreement. Month-to-month plans require a $199-$300 setup fee for new custom website builds.</p>
-      </div>
-    </section>
-  );
-}
+export function PricingPacks() { return <section id="pricing" className="px-5 py-16 lg:px-9 lg:py-24"><div className="mx-auto max-w-[1440px]"><div className="grid gap-8 lg:grid-cols-2"><div><p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-[#b9380a]">Simple plans / 08</p><h2 className="mt-4 text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">Choose your clearest next growth step.</h2></div><p className="max-w-md self-end text-lg leading-7 text-black/60">Start with a website, build consistent trust, or connect your website, reviews, and local search into one growth engine.</p></div><div className="mt-12 grid gap-4 lg:grid-cols-3">{plans.map((plan, index) => { const Icon = plan.icon; return <article key={plan.title} className="group flex min-h-[510px] flex-col border border-black/20 bg-[#f7f7f3] p-6 transition duration-300 hover:-translate-y-2 hover:border-black sm:p-7"><div className="flex items-start justify-between"><p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-black/50">0{index + 1} / Pack</p><Icon className="h-6 w-6 transition duration-300 group-hover:scale-110 group-hover:rotate-[-6deg]" style={{ color: plan.color }} /></div><h3 className="mt-7 text-3xl font-extrabold leading-none tracking-[-.065em]" style={{ color: plan.color }}>{plan.title}</h3><p className="mt-4 text-3xl font-extrabold tracking-[-.06em]">{plan.price}</p><p className="mt-4 min-h-20 text-sm leading-6 text-black/65">{plan.subtitle}</p>{plan.highlight && <p className="mt-4 inline-flex self-start border px-3 py-2 text-[10px] font-extrabold uppercase tracking-[.09em]" style={{ borderColor: plan.color, color: plan.color }}>{plan.highlight}</p>}<ul className="mt-7 space-y-3 border-t border-black/15 pt-5 text-sm leading-6">{plan.features.map((feature) => <li key={feature}><Star className="mr-2 inline h-3.5 w-3.5" style={{ color: plan.color }} fill="currentColor" />{feature}</li>)}</ul><Button href={plan.href} variant="solid" className="mt-auto w-full">{plan.button}</Button></article>; })}</div><article className="mt-4 flex flex-col gap-6 border border-black/15 bg-[#e7e4dd] p-7 md:flex-row md:items-center md:justify-between sm:p-9"><div className="flex gap-5"><div className="shrink-0 rounded-full border border-black/25 p-3"><Share2 className="h-7 w-7 text-black" /></div><div><p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-black/55">Flexible support</p><h3 className="mt-2 text-3xl font-extrabold tracking-[-.06em]">Custom Needs & Social Presence</h3><p className="mt-3 max-w-3xl leading-7 text-black/65">Want a massive social media presence or custom multi-location strategy? We build tailored plans for dominant growth.</p></div></div><Button href="/contact?reason=video-audit&cta=pricing-custom" variant="outline" className="shrink-0">Talk Custom Growth</Button></article></div></section>; }
