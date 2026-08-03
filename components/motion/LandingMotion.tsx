@@ -26,7 +26,7 @@ export function StaggerItem({ children, className }: Omit<MotionChildren, "delay
 
 export function HeroReveal({ children, className, delay = 0 }: MotionChildren) {
   const reduceMotion = useReducedMotion();
-  return <motion.div className={className} initial={reduceMotion ? false : { opacity: 0, y: 38, clipPath: "inset(0 0 100% 0)" }} animate={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }} transition={{ duration: 0.9, delay, ease }}>{children}</motion.div>;
+  return <motion.div className={className} initial={reduceMotion ? false : { opacity: 0, y: 38 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, delay, ease }}>{children}</motion.div>;
 }
 
 export function HeroCardMotion({ children, className, delay = 0.3 }: MotionChildren) {

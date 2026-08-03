@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { DM_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { WhatsAppChat } from "@/components/ui/WhatsAppChat";
 import { business, localBusinessJsonLd } from "@/lib/seo";
+
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
+const dmMono = DM_Mono({ weight: ["400", "500"], subsets: ["latin"], variable: "--font-dm-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(business.url),
@@ -23,5 +27,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en-NZ"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }} /><Navbar /><PageTransition>{children}</PageTransition><Footer /><WhatsAppChat /></body></html>;
+  return <html lang="en-NZ" className={`${manrope.variable} ${dmMono.variable}`}><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }} /><Navbar /><PageTransition>{children}</PageTransition><Footer /><WhatsAppChat /></body></html>;
 }

@@ -36,7 +36,7 @@ const faqs = [
   ["Will I be locked into a long contract?", "No unnecessary lock-ins. We agree on the scope, make the work visible, and earn the next step."],
 ];
 
-const profileImage = "/assets/images/blurred-local-profiles.png";
+const profileImage = "/assets/images/blurred-local-profiles.webp";
 const avatarPositions = ["0% 0%", "100% 0%", "0% 100%", "100% 100%"];
 
 function ProfileAvatar({ index = 0, className = "" }: { index?: number; className?: string }) {
