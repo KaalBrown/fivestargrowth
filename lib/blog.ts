@@ -218,6 +218,25 @@ export const blogArticles: BlogArticle[] = [
     ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=reputation-statistics&article=reputation-management-statistics",
     secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
   },
+  {
+    slug: "why-seo-matters-for-local-businesses",
+    category: "local-businesses",
+    categories: ["practices", "tradies", "local-businesses"],
+    title: "Why SEO Matters: Is Your Website Bringing Local Enquiries—or Just Sitting There?",
+    audience: "Local businesses, medical practices, and tradies who want their website to create calls, bookings, quote requests, and long-term visibility—not simply look presentable.",
+    intro: "A polished website is not automatically a useful one. If Google cannot clearly understand the services, location, and next step it offers, the people already searching for your business can end up calling a competitor instead.",
+    sections: [
+      { heading: "SEO is how Google understands who you help", body: "Search engine optimisation gives Google clear, accurate signals about your services, service areas, business details, page structure, and relevance to a local search. Without those signals, even a well-designed website can be difficult to surface when a ready-to-buy customer searches nearby." },
+      { heading: "A low score is a starting point—not a verdict", body: "A website health score can reveal potential gaps in speed, mobile experience, local SEO tags, and conversion paths. It is not a promise of rankings or revenue, but it is a useful way to identify what may be stopping the site from doing its job." },
+      { heading: "Mobile speed and clarity decide whether visitors stay", body: "Most local searches happen on a phone, often when the customer needs an answer quickly. Slow loading, unclear services, buried phone numbers, or awkward pop-ups create friction. A smart page makes the offer, evidence, and next step obvious in seconds." },
+      { heading: "Local SEO turns the right search into the right page", body: "A strong local presence connects an accurate Google Business Profile with useful service pages, consistent contact details, appropriate schema, genuine recent reviews, and a fast website. Each piece supports the others: the profile gets attention, the website earns confidence, and a clear call-to-action captures the enquiry." },
+      { heading: "Do not accept a website that only looks nice", body: "Ask your agency what they are actively improving: page speed, local visibility, Google Business Profile consistency, technical SEO, mobile conversion paths, and review trust signals. A good answer should be specific, measurable, and connected to how a customer actually finds and contacts you." },
+    ],
+    service: "Smart Websites & Local SEO",
+    cta: "Request a free 5-min video audit",
+    ctaHref: "/contact?reason=video-audit&utm_source=blog&utm_medium=organic&utm_campaign=why-seo-matters&article=why-seo-matters-for-local-businesses",
+    secondaryCta: { label: "Run an instant site scan", href: "/#free-audit" },
+  },
 ];
 
 export function getBlogArticle(slug: string) {
