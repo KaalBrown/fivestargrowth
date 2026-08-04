@@ -135,14 +135,12 @@ function MapsProfile({ improved = false }: { improved?: boolean }) {
   );
 }
 function PhoneVisual({ after = false }: { after?: boolean }) {
-  const crop = after ? "514 146 470 1210" : "38 146 404 1210";
+  const crop = after ? "524 165 455 1135" : "42 165 394 1135";
   const description = after
     ? "A fictional clinic mobile homepage with visible booking, call, services, and review elements"
     : "A fictional clinic mobile homepage with an unclear first impression";
   return (
-    <div
-      className={`relative overflow-hidden rounded-[1.55rem] bg-[#f7f7f3] ${after ? "border-4 border-[#ff5a1f] shadow-[8px_8px_0_rgba(255,90,31,.55)]" : "border-4 border-white/40 shadow-xl"}`}
-    >
+    <div className={`relative overflow-hidden rounded-[1.55rem] bg-transparent ${after ? "drop-shadow-[8px_8px_0_rgba(255,90,31,.55)]" : "drop-shadow-xl"}`}>
       <svg
         viewBox={crop}
         role="img"
@@ -270,15 +268,15 @@ export default function HomePage() {
                   they do not tell a ready customer what to do next.
                 </p>
               </div>
-              <Stagger className="mx-auto w-full max-w-[380px]">
-                <div className="flex items-end justify-center gap-5 sm:gap-8">
-                  <StaggerItem className="w-[118px] sm:w-[144px]">
+              <Stagger className="mx-auto w-full max-w-[380px] sm:max-w-[470px]">
+                <div className="flex items-end justify-center gap-3 sm:gap-6">
+                  <StaggerItem className="w-[126px] sm:w-[168px]">
                     <PhoneVisual />
                   </StaggerItem>
                   <StaggerItem className="mb-24 text-xl text-[#ff8a5d] sm:mb-28">
                     →
                   </StaggerItem>
-                  <StaggerItem className="w-[138px] -translate-y-3 sm:w-[164px]">
+                  <StaggerItem className="w-[144px] -translate-y-3 sm:w-[190px]">
                     <PhoneVisual after />
                   </StaggerItem>
                 </div>
