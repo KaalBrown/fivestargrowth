@@ -245,8 +245,8 @@ export default function HomePage() {
                   they do not tell a ready customer what to do next.
                 </p>
               </div>
-              <div className="mx-auto w-full max-w-[650px] overflow-hidden border border-white/15 bg-white shadow-[10px_10px_0_rgba(255,90,31,.65)]">
-                <Image src="/assets/images/smart-website-before-after-realistic.webp" alt="Comparison of a basic clinic website and a high-converting clinic website with a clear consultation action" width={1536} height={1024} className="h-auto w-full" />
+              <div className="mx-auto w-full max-w-[650px]">
+                <Image src="/assets/images/clinic-before-after-phones.webp" alt="Two clinic mobile websites: a basic page with no clear action beside a premium mobile page with a consultation booking call to action" width={1536} height={1024} className="h-auto w-full" />
               </div>
             </div>
           </Reveal>
