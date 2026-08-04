@@ -246,7 +246,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="mx-auto w-full max-w-[650px]">
-                <Image src="/assets/images/clinic-before-after-phones.webp" alt="Two clinic mobile websites: a basic page with no clear action beside a premium mobile page with a consultation booking call to action" width={1536} height={1024} className="h-auto w-full" />
+                <Image src="/assets/images/smart-clinic-mobile-comparison.webp" alt="A basic clinic website beside an action-first mobile landing page with clear calls, hours, location and appointment booking" width={1536} height={1024} className="h-auto w-full" />
               </div>
             </div>
           </Reveal>
