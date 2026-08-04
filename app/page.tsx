@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import {
   HeroCardMotion,
@@ -134,30 +135,6 @@ function MapsProfile({ improved = false }: { improved?: boolean }) {
     </div>
   );
 }
-function PhoneVisual({ after = false }: { after?: boolean }) {
-  const crop = after ? "524 165 455 1135" : "42 165 394 1135";
-  const description = after
-    ? "A fictional clinic mobile homepage with visible booking, call, services, and review elements"
-    : "A fictional clinic mobile homepage with an unclear first impression";
-  return (
-    <div className={`relative overflow-hidden rounded-[1.55rem] bg-transparent ${after ? "drop-shadow-[8px_8px_0_rgba(255,90,31,.55)]" : "drop-shadow-xl"}`}>
-      <svg
-        viewBox={crop}
-        role="img"
-        aria-label={description}
-        className="block w-full"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <image
-          href="/assets/images/riverside-mobile-before-after.png"
-          width="1024"
-          height="1536"
-        />
-      </svg>
-    </div>
-  );
-}
-
 export default function HomePage() {
   return (
     <LandingMotionScope className="fsg-home">
@@ -268,41 +245,9 @@ export default function HomePage() {
                   they do not tell a ready customer what to do next.
                 </p>
               </div>
-              <Stagger className="mx-auto w-full max-w-[380px] sm:max-w-[470px]">
-                <div className="flex items-end justify-center gap-3 sm:gap-6">
-                  <StaggerItem className="w-[126px] sm:w-[168px]">
-                    <PhoneVisual />
-                  </StaggerItem>
-                  <StaggerItem className="mb-24 text-xl text-[#ff8a5d] sm:mb-28">
-                    →
-                  </StaggerItem>
-                  <StaggerItem className="w-[144px] -translate-y-3 sm:w-[190px]">
-                    <PhoneVisual after />
-                  </StaggerItem>
-                </div>
-                <div className="mt-7 grid grid-cols-2 gap-2.5 border-t border-white/15 pt-5">
-                  <StaggerItem>
-                    <p className="flex min-h-12 items-center gap-2 border border-white/15 bg-white/[.045] px-3 text-[12px] font-bold leading-4 text-white/90">
-                      <span className="text-[#ff8a5d]">✓</span> Clear next step
-                    </p>
-                  </StaggerItem>
-                  <StaggerItem>
-                    <p className="flex min-h-12 items-center gap-2 border border-white/15 bg-white/[.045] px-3 text-[12px] font-bold leading-4 text-white/90">
-                      <span className="text-[#ff8a5d]">✓</span> Key info first
-                    </p>
-                  </StaggerItem>
-                  <StaggerItem>
-                    <p className="flex min-h-12 items-center gap-2 border border-white/15 bg-white/[.045] px-3 text-[12px] font-bold leading-4 text-white/90">
-                      <span className="text-[#ff8a5d]">✓</span> Built for calls
-                    </p>
-                  </StaggerItem>
-                  <StaggerItem>
-                    <p className="flex min-h-12 items-center gap-2 border border-white/15 bg-white/[.045] px-3 text-[12px] font-bold leading-4 text-white/90">
-                      <span className="text-[#ff8a5d]">✓</span> Trust shown early
-                    </p>
-                  </StaggerItem>
-                </div>
-              </Stagger>
+              <div className="mx-auto w-full max-w-[650px] overflow-hidden border border-white/15 bg-white shadow-[10px_10px_0_rgba(255,90,31,.65)]">
+                <Image src="/assets/images/smart-website-before-after-realistic.png" alt="Comparison of a basic clinic website and a high-converting clinic website with a clear consultation action" width={1536} height={1024} className="h-auto w-full" />
+              </div>
             </div>
           </Reveal>
           <Reveal
