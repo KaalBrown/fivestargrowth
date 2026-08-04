@@ -1,40 +1,420 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/Button";
-import { HeroCardMotion, HeroReveal, HoverPanel, LandingMotionScope, Reveal, Stagger, StaggerItem } from "@/components/motion/LandingMotion";
+import {
+  HeroCardMotion,
+  HeroReveal,
+  HoverPanel,
+  LandingMotionScope,
+  Reveal,
+  Stagger,
+  StaggerItem,
+} from "@/components/motion/LandingMotion";
 import { PricingPacks } from "@/components/sections/PricingPacks";
 import { InstantAudit } from "@/components/sections/InstantAudit";
 import { HeroGrowthAnimation } from "@/components/sections/HeroGrowthAnimation";
 
-export const metadata: Metadata = { alternates: { canonical: "/" }, openGraph: { url: "/" } };
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
 
 const growthSystemSteps = [
-  ["01", "MAPS", "Get Discovered", "Local SEO & Map rankings that get you found first."],
-  ["02", "MOBILE SITE", "Get Chosen", "Smart Websites optimized for mobile phone calls."],
-  ["03", "REVIEWS", "Stay Remembered", "Automated 5-Star Google Reviews on autopilot."],
+  [
+    "01",
+    "MAPS",
+    "Get Discovered",
+    "Local SEO & Map rankings that get you found first.",
+  ],
+  [
+    "02",
+    "MOBILE SITE",
+    "Get Chosen",
+    "Smart Websites optimized for mobile phone calls.",
+  ],
+  [
+    "03",
+    "REVIEWS",
+    "Stay Remembered",
+    "Automated 5-Star Google Reviews on autopilot.",
+  ],
 ];
 
 const faqs = [
-  ["Do I need every service?", "No. A good plan starts with the highest-impact gap, not a bundle of activity you do not need."],
-  ["Is this only for Christchurch businesses?", "Christchurch is our local focus, and we work with selected New Zealand businesses beyond the city when the fit is right."],
-  ["When should I expect results?", "Website and conversion fixes can create movement quickly. Visibility and reputation work compound over the months that follow."],
-  ["Will I be locked into a long contract?", "No unnecessary lock-ins. We agree on the scope, make the work visible, and earn the next step."],
+  [
+    "Do I need every service?",
+    "No. A good plan starts with the highest-impact gap, not a bundle of activity you do not need.",
+  ],
+  [
+    "Is this only for Christchurch businesses?",
+    "Christchurch is our local focus, and we work with selected New Zealand businesses beyond the city when the fit is right.",
+  ],
+  [
+    "When should I expect results?",
+    "Website and conversion fixes can create movement quickly. Visibility and reputation work compound over the months that follow.",
+  ],
+  [
+    "Will I be locked into a long contract?",
+    "No unnecessary lock-ins. We agree on the scope, make the work visible, and earn the next step.",
+  ],
 ];
 
 const profileImage = "/assets/images/blurred-local-profiles.webp";
 const avatarPositions = ["0% 0%", "100% 0%", "0% 100%", "100% 100%"];
 
-function ProfileAvatar({ index = 0, className = "" }: { index?: number; className?: string }) { return <span aria-hidden className={`block shrink-0 rounded-full bg-cover ${className}`} style={{ backgroundImage: `url(${profileImage})`, backgroundSize: "200% 200%", backgroundPosition: avatarPositions[index] }} />; }
-function Marker({ children }: { children: React.ReactNode }) { return <p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-black/55">{children}</p>; }
-function MapsProfile({ improved = false }: { improved?: boolean }) { return <div className={`relative border p-4 transition duration-500 ${improved ? "border-[#ff5a1f] bg-[#ff5a1f]/10 shadow-[0_0_28px_rgba(255,90,31,.3)]" : "border-white/15 bg-white/[.04] opacity-55 grayscale"}`}><div className="flex items-center justify-between"><p className="text-[10px] font-extrabold uppercase tracking-[.12em]">Google Maps</p>{improved && <span className="bg-[#ff5a1f] px-2 py-1 text-[8px] font-extrabold uppercase tracking-wider text-white">Trusted</span>}</div><div className="mt-4 flex items-center gap-3"><ProfileAvatar index={improved ? 2 : 0} className="h-10 w-10" /><div><p className="text-sm font-extrabold">{improved ? "Apex Local Services" : "Local Service Co."}</p><p className="text-[10px] text-white/55">Christchurch · Open now</p></div></div><div className="mt-4 flex items-center gap-2"><strong className="text-lg">{improved ? "4.9" : "3.8"}</strong><span className={improved ? "tracking-[.12em] text-[#ff8a5d]" : "tracking-[.12em] text-white/50"}>{improved ? "★★★★★" : "★★★☆☆"}</span><span className="text-[10px] text-white/55">({improved ? "186" : "14"} reviews)</span></div><p className="mt-4 border-t border-white/15 pt-3 text-[11px] leading-5 text-white/65">{improved ? "Visible proof that makes a local customer comfortable choosing you." : "Low trust signals and little reason to click first."}</p></div>; }
+function ProfileAvatar({
+  index = 0,
+  className = "",
+}: {
+  index?: number;
+  className?: string;
+}) {
+  return (
+    <span
+      aria-hidden
+      className={`block shrink-0 rounded-full bg-cover ${className}`}
+      style={{
+        backgroundImage: `url(${profileImage})`,
+        backgroundSize: "200% 200%",
+        backgroundPosition: avatarPositions[index],
+      }}
+    />
+  );
+}
+function Marker({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-black/55">
+      {children}
+    </p>
+  );
+}
+function MapsProfile({ improved = false }: { improved?: boolean }) {
+  return (
+    <div
+      className={`relative border p-4 transition duration-500 ${improved ? "border-[#ff5a1f] bg-[#ff5a1f]/10 shadow-[0_0_28px_rgba(255,90,31,.3)]" : "border-white/15 bg-white/[.04] opacity-55 grayscale"}`}
+    >
+      <div className="flex items-center justify-between">
+        <p className="text-[10px] font-extrabold uppercase tracking-[.12em]">
+          Google Maps
+        </p>
+        {improved && (
+          <span className="bg-[#ff5a1f] px-2 py-1 text-[8px] font-extrabold uppercase tracking-wider text-white">
+            Trusted
+          </span>
+        )}
+      </div>
+      <div className="mt-4 flex items-center gap-3">
+        <ProfileAvatar index={improved ? 2 : 0} className="h-10 w-10" />
+        <div>
+          <p className="text-sm font-extrabold">
+            {improved ? "Apex Local Services" : "Local Service Co."}
+          </p>
+          <p className="text-[10px] text-white/55">Christchurch · Open now</p>
+        </div>
+      </div>
+      <div className="mt-4 flex items-center gap-2">
+        <strong className="text-lg">{improved ? "4.9" : "3.8"}</strong>
+        <span
+          className={
+            improved
+              ? "tracking-[.12em] text-[#ff8a5d]"
+              : "tracking-[.12em] text-white/50"
+          }
+        >
+          {improved ? "★★★★★" : "★★★☆☆"}
+        </span>
+        <span className="text-[10px] text-white/55">
+          ({improved ? "186" : "14"} reviews)
+        </span>
+      </div>
+      <p className="mt-4 border-t border-white/15 pt-3 text-[11px] leading-5 text-white/65">
+        {improved
+          ? "Visible proof that makes a local customer comfortable choosing you."
+          : "Low trust signals and little reason to click first."}
+      </p>
+    </div>
+  );
+}
+function PhoneVisual({ after = false }: { after?: boolean }) {
+  const crop = after ? "514 146 470 1210" : "38 146 404 1210";
+  const description = after
+    ? "A fictional clinic mobile homepage with visible booking, call, services, and review elements"
+    : "A fictional clinic mobile homepage with an unclear first impression";
+  return (
+    <div
+      className={`relative overflow-hidden rounded-[1.55rem] bg-[#f7f7f3] ${after ? "border-4 border-[#ff5a1f] shadow-[8px_8px_0_rgba(255,90,31,.55)]" : "border-4 border-white/40 shadow-xl"}`}
+    >
+      <svg
+        viewBox={crop}
+        role="img"
+        aria-label={description}
+        className="block w-full"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <image
+          href="/assets/images/riverside-mobile-before-after.png"
+          width="1024"
+          height="1536"
+        />
+      </svg>
+    </div>
+  );
+}
 
-export default function HomePage() { return <LandingMotionScope className="fsg-home">
-  <section data-motion-managed className="border-b border-black/15"><div className="mx-auto max-w-[1440px] px-5 pb-10 pt-6 lg:px-9 lg:pb-16 lg:pt-16"><div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-10"><HeroReveal><div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[.08em]"><div className="flex -space-x-2">{avatarPositions.map((_, index) => <ProfileAvatar key={index} index={index} className="h-10 w-10 border-2 border-[#f7f7f3]" />)}</div><span><span className="fsg-star tracking-[.12em]">★ ★ ★ ★ ★</span><br /><span className="text-[10px] text-black/55">Over $100K+ leads generated in Christchurch</span></span></div><h1 className="mt-7 max-w-5xl text-[2.7rem] font-extrabold leading-[.84] tracking-[-.085em] sm:text-6xl lg:mt-10 lg:text-[clamp(3.75rem,5.5vw,6.25rem)]"><span className="block">The All-In-One</span><span className="block fsg-orange">Local Growth</span><span className="block">Smart Engine</span></h1><div className="mt-5 max-w-xl md:hidden"><p className="border-l-2 border-[#ff5a1f] pl-4 text-base font-semibold leading-6">Tired of empty website traffic and bad Google search standing? We transform your online reputation and turn local searches into paying customers.</p></div></HeroReveal><HeroReveal delay={0.12} className="hidden items-end justify-start pt-2 lg:flex lg:justify-end lg:pb-8"><p className="max-w-[360px] border-l-2 border-[#ff5a1f] pl-5 text-lg font-medium leading-7 tracking-tight">Tired of empty website traffic and bad Google search standing? We transform your online reputation and turn local searches into paying customers.</p></HeroReveal></div><div className="relative mx-auto mt-0 max-w-4xl pb-2 sm:mt-2 lg:mt-6"><HeroCardMotion className="fsg-hero-card relative w-full max-w-full bg-[#101010] p-4 text-white sm:p-7"><div className="flex items-start justify-between border-b border-white/20 pb-4 sm:pb-12"><span className="fsg-mono text-[10px] uppercase tracking-[.16em] text-white/60">Five Star Growth / 01</span><span className="text-[#ff5a1f]">✦</span></div><div className="grid gap-4 py-1 sm:grid-cols-[minmax(0,1fr)_290px] sm:items-center sm:gap-8 sm:py-8"><div><h2 className="max-w-lg break-words text-[1.4rem] font-extrabold leading-[.91] tracking-[-.07em] sm:text-[clamp(2rem,5vw,3rem)] sm:leading-[.95]">Turn everyday Google searches into booked appointments and lifelong clients.</h2></div><HeroGrowthAnimation /></div><div className="hidden flex-wrap items-center justify-between gap-4 border-t border-white/20 pt-5 md:flex"><span className="text-xs text-white/55">Built to compound, not just look busy.</span><a href="#pricing" className="inline-flex min-h-11 items-center justify-center border border-white/70 px-6 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-white transition hover:bg-white hover:text-[#101010]">Plans ↘</a></div></HeroCardMotion><div className="mt-6 mb-8 text-center md:hidden"><a href="#pricing" className="inline-flex min-h-11 items-center justify-center border border-[#101010] bg-[#f7f7f3] px-6 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-[#101010] transition hover:bg-[#101010] hover:text-white">Plans ↘</a></div></div></div></section>
+export default function HomePage() {
+  return (
+    <LandingMotionScope className="fsg-home">
+      <section data-motion-managed className="border-b border-black/15">
+        <div className="mx-auto max-w-[1440px] px-5 pb-10 pt-6 lg:px-9 lg:pb-16 lg:pt-16">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-10">
+            <HeroReveal>
+              <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-[.08em]">
+                <div className="flex -space-x-2">
+                  {avatarPositions.map((_, index) => (
+                    <ProfileAvatar
+                      key={index}
+                      index={index}
+                      className="h-10 w-10 border-2 border-[#f7f7f3]"
+                    />
+                  ))}
+                </div>
+                <span>
+                  <span className="fsg-star tracking-[.12em]">★ ★ ★ ★ ★</span>
+                  <br />
+                  <span className="text-[10px] text-black/55">
+                    Over $100K+ leads generated in Christchurch
+                  </span>
+                </span>
+              </div>
+              <h1 className="mt-7 max-w-5xl text-[2.7rem] font-extrabold leading-[.84] tracking-[-.085em] sm:text-6xl lg:mt-10 lg:text-[clamp(3.75rem,5.5vw,6.25rem)]">
+                <span className="block">The All-In-One</span>
+                <span className="block fsg-orange">Local Growth</span>
+                <span className="block">Smart Engine</span>
+              </h1>
+              <div className="mt-5 max-w-xl md:hidden">
+                <p className="border-l-2 border-[#ff5a1f] pl-4 text-base font-semibold leading-6">
+                  Tired of empty website traffic and bad Google search standing?
+                  We transform your online reputation and turn local searches
+                  into paying customers.
+                </p>
+              </div>
+            </HeroReveal>
+            <HeroReveal
+              delay={0.12}
+              className="hidden items-end justify-start pt-2 lg:flex lg:justify-end lg:pb-8"
+            >
+              <p className="max-w-[360px] border-l-2 border-[#ff5a1f] pl-5 text-lg font-medium leading-7 tracking-tight">
+                Tired of empty website traffic and bad Google search standing?
+                We transform your online reputation and turn local searches into
+                paying customers.
+              </p>
+            </HeroReveal>
+          </div>
+          <div className="relative mx-auto mt-0 max-w-4xl pb-2 sm:mt-2 lg:mt-6">
+            <HeroCardMotion className="fsg-hero-card relative w-full max-w-full bg-[#101010] p-4 text-white sm:p-7">
+              <div className="flex items-start justify-between border-b border-white/20 pb-4 sm:pb-12">
+                <span className="fsg-mono text-[10px] uppercase tracking-[.16em] text-white/60">
+                  Five Star Growth / 01
+                </span>
+                <span className="text-[#ff5a1f]">✦</span>
+              </div>
+              <div className="grid gap-4 py-1 sm:grid-cols-[minmax(0,1fr)_290px] sm:items-center sm:gap-8 sm:py-8">
+                <div>
+                  <h2 className="max-w-lg break-words text-[1.4rem] font-extrabold leading-[.91] tracking-[-.07em] sm:text-[clamp(2rem,5vw,3rem)] sm:leading-[.95]">
+                    Turn everyday Google searches into booked appointments and
+                    lifelong clients.
+                  </h2>
+                </div>
+                <HeroGrowthAnimation />
+              </div>
+              <div className="hidden flex-wrap items-center justify-between gap-4 border-t border-white/20 pt-5 md:flex">
+                <span className="text-xs text-white/55">
+                  Built to compound, not just look busy.
+                </span>
+                <a
+                  href="#pricing"
+                  className="inline-flex min-h-11 items-center justify-center border border-white/70 px-6 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-white transition hover:bg-white hover:text-[#101010]"
+                >
+                  Plans ↘
+                </a>
+              </div>
+            </HeroCardMotion>
+            <div className="mt-6 mb-8 text-center md:hidden">
+              <a
+                href="#pricing"
+                className="inline-flex min-h-11 items-center justify-center border border-[#101010] bg-[#f7f7f3] px-6 py-3 text-xs font-extrabold uppercase tracking-[.08em] text-[#101010] transition hover:bg-[#101010] hover:text-white"
+              >
+                Plans ↘
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <section data-motion-managed className="bg-[#101010] px-5 py-16 text-white lg:px-9 lg:py-24"><div className="mx-auto max-w-[1240px]"><Reveal><p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-[#ff8a5d]">What we solve / 02</p><div className="mt-5 grid items-center gap-10 border-b border-white/15 pb-14 lg:grid-cols-[1fr_.9fr]"><div><h2 className="max-w-3xl text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">A cute website is not helping your business. <span className="text-[#ff8a5d]">A smart website will.</span></h2><p className="mt-6 max-w-xl text-lg leading-8 text-white/65">A team photo and a vague welcome page might look nice, but they do not tell a ready customer what to do next.</p></div><div><div className="flex items-end justify-center gap-5 sm:gap-8"><div><p className="mb-3 text-center text-[9px] font-extrabold uppercase tracking-[.12em] text-white/55">Before</p><div role="img" aria-label="Bland fictional Riverside Family Clinic mobile homepage" className="h-[330px] w-[126px] rounded-[1.35rem] border-4 border-white/30 bg-no-repeat shadow-xl sm:h-[410px] sm:w-[156px]" style={{ backgroundImage: "url('/assets/images/riverside-mobile-before-after.png')", backgroundSize: "250% auto", backgroundPosition: "0% 35%" }} /></div><span className="mb-32 text-2xl text-[#ff8a5d] sm:mb-40">→</span><div className="-translate-y-4"><p className="mb-3 text-center text-[9px] font-extrabold uppercase tracking-[.12em] text-[#ff8a5d]">After</p><div role="img" aria-label="High-converting fictional Riverside Family Clinic mobile homepage" className="h-[330px] w-[126px] rounded-[1.35rem] border-4 border-[#ff5a1f] bg-no-repeat shadow-[8px_8px_0_rgba(255,90,31,.7)] sm:h-[410px] sm:w-[156px]" style={{ backgroundImage: "url('/assets/images/riverside-mobile-before-after.png')", backgroundSize: "250% auto", backgroundPosition: "84% 35%" }} /></div></div><div className="mt-6 grid gap-2 border-t border-white/15 pt-5 text-xs text-white/75 sm:grid-cols-2"><p><span className="mr-2 text-[#ff8a5d]">●</span>Clear next step</p><p><span className="mr-2 text-[#ff8a5d]">●</span>Key info above the fold</p><p><span className="mr-2 text-[#ff8a5d]">●</span>Built for mobile calls</p><p><span className="mr-2 text-[#ff8a5d]">●</span>Trust signals visible</p></div></div></div></Reveal><Reveal delay={0.1} className="mt-14 grid gap-10 lg:grid-cols-[1fr_.9fr]"><div><h2 className="max-w-3xl text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">Be the business customers trust before they call.</h2><p className="mt-6 max-w-xl text-lg leading-8 text-white/65">Most people choose between two local profiles in seconds. Fresh reviews, a stronger rating, and clear information make the safer choice feel obvious.</p><Button href="#growth-system" className="mt-8" variant="glow">See the growth system</Button></div><div className="grid gap-4 sm:grid-cols-2 sm:items-end"><MapsProfile /><div className="sm:-translate-y-5"><MapsProfile improved /></div><p className="sm:col-span-2 fsg-mono text-[10px] uppercase tracking-[.16em] text-white/50">Low trust → trusted local choice</p></div></Reveal></div></section>
+      <section
+        data-motion-managed
+        className="bg-[#101010] px-5 py-16 text-white lg:px-9 lg:py-24"
+      >
+        <div className="mx-auto max-w-[1240px]">
+          <Reveal>
+            <p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-[#ff8a5d]">
+              What we solve / 02
+            </p>
+            <div className="mt-5 grid items-center gap-10 border-b border-white/15 pb-12 lg:grid-cols-[1fr_.9fr] lg:pb-14">
+              <div>
+                <h2 className="max-w-3xl text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">
+                  A cute website is not helping your business.{" "}
+                  <span className="text-[#ff8a5d]">A smart website will.</span>
+                </h2>
+                <p className="mt-6 max-w-xl text-lg leading-8 text-white/70">
+                  A team photo and a vague welcome page might look nice, but
+                  they do not tell a ready customer what to do next.
+                </p>
+              </div>
+              <Stagger className="mx-auto w-full max-w-[380px]">
+                <div className="flex items-end justify-center gap-5 sm:gap-8">
+                  <StaggerItem className="w-[118px] sm:w-[144px]">
+                    <PhoneVisual />
+                  </StaggerItem>
+                  <StaggerItem className="mb-24 text-xl text-[#ff8a5d] sm:mb-28">
+                    →
+                  </StaggerItem>
+                  <StaggerItem className="w-[138px] -translate-y-3 sm:w-[164px]">
+                    <PhoneVisual after />
+                  </StaggerItem>
+                </div>
+                <div className="mt-7 grid grid-cols-2 gap-2.5 border-t border-white/15 pt-5">
+                  <StaggerItem>
+                    <p className="flex min-h-12 items-center gap-2 border border-white/15 bg-white/[.045] px-3 text-[12px] font-bold leading-4 text-white/90">
+                      <span className="text-[#ff8a5d]">✓</span> Clear next step
+                    </p>
+                  </StaggerItem>
+                  <StaggerItem>
+                    <p className="flex min-h-12 items-center gap-2 border border-white/15 bg-white/[.045] px-3 text-[12px] font-bold leading-4 text-white/90">
+                      <span className="text-[#ff8a5d]">✓</span> Key info first
+                    </p>
+                  </StaggerItem>
+                  <StaggerItem>
+                    <p className="flex min-h-12 items-center gap-2 border border-white/15 bg-white/[.045] px-3 text-[12px] font-bold leading-4 text-white/90">
+                      <span className="text-[#ff8a5d]">✓</span> Built for calls
+                    </p>
+                  </StaggerItem>
+                  <StaggerItem>
+                    <p className="flex min-h-12 items-center gap-2 border border-white/15 bg-white/[.045] px-3 text-[12px] font-bold leading-4 text-white/90">
+                      <span className="text-[#ff8a5d]">✓</span> Trust shown early
+                    </p>
+                  </StaggerItem>
+                </div>
+              </Stagger>
+            </div>
+          </Reveal>
+          <Reveal
+            delay={0.1}
+            className="mt-14 grid gap-10 lg:grid-cols-[1fr_.9fr]"
+          >
+            <div>
+              <h2 className="max-w-3xl text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">
+                Be the business customers trust before they call.
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-white/65">
+                Most people choose between two local profiles in seconds. Fresh
+                reviews, a stronger rating, and clear information make the safer
+                choice feel obvious.
+              </p>
+              <Button href="#growth-system" className="mt-8" variant="glow">
+                See the growth system
+              </Button>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 sm:items-end">
+              <MapsProfile />
+              <div className="sm:-translate-y-5">
+                <MapsProfile improved />
+              </div>
+              <p className="sm:col-span-2 fsg-mono text-[10px] uppercase tracking-[.16em] text-white/50">
+                Low trust → trusted local choice
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
-  <section data-motion-managed id="growth-system" className="bg-[#101010] px-5 py-16 text-white lg:px-9 lg:py-24"><div className="mx-auto max-w-[1240px]"><Reveal className="max-w-3xl"><p className="fsg-mono inline-flex bg-white/[.06] px-3 py-1 text-[10px] uppercase tracking-[.16em] text-[#ff8a5d]">The Growth System</p><h2 className="mt-5 text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">From local search to a booked customer.</h2><p className="mt-5 text-lg italic leading-8 text-white/75">Every step removes a barrier stopping a ready-to-buy customer from calling you.</p></Reveal><Stagger className="mt-12 grid gap-4 md:grid-cols-3">{growthSystemSteps.map(([number, channel, title, copy]) => <StaggerItem key={number}><HoverPanel><article className="group min-h-[280px] border border-white/15 bg-white/[.04] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#ff5a1f] hover:bg-white/[.07]"><div className="border-b border-white/15 pb-5"><span className="fsg-mono inline-flex rounded-full bg-white/[.08] px-3 py-1.5 text-[10px] font-bold tracking-[.12em] text-white/80">{number} / {channel}</span></div><h3 className="mt-7 text-2xl font-extrabold tracking-[-.06em]">{title}</h3><p className="mt-4 max-w-xs text-lg leading-7 text-white/75">{copy}</p><div className="mt-8 border-t border-white/15 pt-4"><span className="fsg-mono inline-flex items-center gap-2 rounded-full bg-white/[.08] px-3 py-1 text-[10px] uppercase tracking-[.12em] text-white/70"><span className="h-1.5 w-1.5 rounded-full bg-[#ff5a1f] group-hover:animate-pulse" />Step {number}</span></div></article></HoverPanel></StaggerItem>)}</Stagger></div></section>
+      <section
+        data-motion-managed
+        id="growth-system"
+        className="bg-[#101010] px-5 py-16 text-white lg:px-9 lg:py-24"
+      >
+        <div className="mx-auto max-w-[1240px]">
+          <Reveal className="max-w-3xl">
+            <p className="fsg-mono inline-flex bg-white/[.06] px-3 py-1 text-[10px] uppercase tracking-[.16em] text-[#ff8a5d]">
+              The Growth System
+            </p>
+            <h2 className="mt-5 text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">
+              From local search to a booked customer.
+            </h2>
+            <p className="mt-5 text-lg italic leading-8 text-white/75">
+              Every step removes a barrier stopping a ready-to-buy customer from
+              calling you.
+            </p>
+          </Reveal>
+          <Stagger className="mt-12 grid gap-4 md:grid-cols-3">
+            {growthSystemSteps.map(([number, channel, title, copy]) => (
+              <StaggerItem key={number}>
+                <HoverPanel>
+                  <article className="group min-h-[280px] border border-white/15 bg-white/[.04] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#ff5a1f] hover:bg-white/[.07]">
+                    <div className="border-b border-white/15 pb-5">
+                      <span className="fsg-mono inline-flex rounded-full bg-white/[.08] px-3 py-1.5 text-[10px] font-bold tracking-[.12em] text-white/80">
+                        {number} / {channel}
+                      </span>
+                    </div>
+                    <h3 className="mt-7 text-2xl font-extrabold tracking-[-.06em]">
+                      {title}
+                    </h3>
+                    <p className="mt-4 max-w-xs text-lg leading-7 text-white/75">
+                      {copy}
+                    </p>
+                    <div className="mt-8 border-t border-white/15 pt-4">
+                      <span className="fsg-mono inline-flex items-center gap-2 rounded-full bg-white/[.08] px-3 py-1 text-[10px] uppercase tracking-[.12em] text-white/70">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#ff5a1f] group-hover:animate-pulse" />
+                        Step {number}
+                      </span>
+                    </div>
+                  </article>
+                </HoverPanel>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
 
-  <PricingPacks />
-  <InstantAudit />
-  <section className="border-y border-black/15 bg-[#e7e4dd] px-5 py-16 lg:px-9 lg:py-24"><div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[.75fr_1.25fr]"><div><Marker>Before we begin / 04</Marker><h2 className="mt-4 text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">A few good questions.</h2></div><div className="divide-y divide-black/20">{faqs.map(([question, answer], index) => <details key={question} className="group py-5" open={index === 0}><summary className="cursor-pointer list-none text-xl font-extrabold tracking-[-.04em]"><span className="mr-4 fsg-mono text-xs text-[#ff5a1f]">0{index + 1}</span>{question}<span className="float-right text-[#ff5a1f] group-open:rotate-45">+</span></summary><p className="ml-9 mt-4 max-w-xl leading-7 text-black/60">{answer}</p></details>)}</div></div></section>
-</LandingMotionScope>; }
+      <PricingPacks />
+      <InstantAudit />
+      <section className="border-y border-black/15 bg-[#e7e4dd] px-5 py-16 lg:px-9 lg:py-24">
+        <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[.75fr_1.25fr]">
+          <div>
+            <Marker>Before we begin / 04</Marker>
+            <h2 className="mt-4 text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">
+              A few good questions.
+            </h2>
+          </div>
+          <div className="divide-y divide-black/20">
+            {faqs.map(([question, answer], index) => (
+              <details key={question} className="group py-5" open={index === 0}>
+                <summary className="cursor-pointer list-none text-xl font-extrabold tracking-[-.04em]">
+                  <span className="mr-4 fsg-mono text-xs text-[#ff5a1f]">
+                    0{index + 1}
+                  </span>
+                  {question}
+                  <span className="float-right text-[#ff5a1f] group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="ml-9 mt-4 max-w-xl leading-7 text-black/60">
+                  {answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    </LandingMotionScope>
+  );
+}
