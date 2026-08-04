@@ -18,10 +18,10 @@ const icons = {
 };
 
 const comparisonVisuals: Record<ServiceKey, { src: string; alt: string }> = {
-  website: { src: "/assets/images/service-website-before-after.png", alt: "Comparison between a cluttered outdated mobile website and a clear high-converting mobile website" },
-  trust: { src: "/assets/images/service-trust-before-after.png", alt: "Comparison between a low-rating business listing and an automated review growth system" },
-  growth: { src: "/assets/images/service-growth-before-after.png", alt: "Comparison between a buried local search listing and a high-ranking local Maps result" },
-  social: { src: "/assets/images/service-social-before-after.png", alt: "Comparison between an inactive social profile and a consistent active social media presence" },
+  website: { src: "/assets/images/service-website-before-after.webp", alt: "Comparison between a cluttered outdated mobile website and a clear high-converting mobile website" },
+  trust: { src: "/assets/images/service-trust-before-after.webp", alt: "Comparison between a low-rating business listing and an automated review growth system" },
+  growth: { src: "/assets/images/service-growth-before-after.webp", alt: "Comparison between a buried local search listing and a high-ranking local Maps result" },
+  social: { src: "/assets/images/service-social-before-after.webp", alt: "Comparison between an inactive social profile and a consistent active social media presence" },
 };
 
 export function ServiceVisual({ serviceKey }: { serviceKey: ServiceKey }) {
