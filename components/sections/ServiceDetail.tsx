@@ -6,6 +6,7 @@ import {
   Rocket,
   Star,
 } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { serviceByKey, type ServiceKey } from "@/lib/services";
 
@@ -14,6 +15,13 @@ const icons = {
   trust: MapPin,
   growth: Rocket,
   social: Instagram,
+};
+
+const comparisonVisuals: Record<ServiceKey, { src: string; alt: string }> = {
+  website: { src: "/assets/images/service-website-before-after.png", alt: "Comparison between a cluttered outdated mobile website and a clear high-converting mobile website" },
+  trust: { src: "/assets/images/service-trust-before-after.png", alt: "Comparison between a low-rating business listing and an automated review growth system" },
+  growth: { src: "/assets/images/service-growth-before-after.png", alt: "Comparison between a buried local search listing and a high-ranking local Maps result" },
+  social: { src: "/assets/images/service-social-before-after.png", alt: "Comparison between an inactive social profile and a consistent active social media presence" },
 };
 
 export function ServiceVisual({ serviceKey }: { serviceKey: ServiceKey }) {
@@ -53,6 +61,7 @@ export function ServiceVisual({ serviceKey }: { serviceKey: ServiceKey }) {
 
 export function ServiceDetailPage({ serviceKey }: { serviceKey: ServiceKey }) {
   const service = serviceByKey[serviceKey];
+  const comparison = comparisonVisuals[serviceKey];
   return (
     <main className="bg-[#f7f7f3] text-[#101010]">
       <section className="border-b border-black/15 px-5 py-16 lg:px-9 lg:py-24">
@@ -136,35 +145,9 @@ export function ServiceDetailPage({ serviceKey }: { serviceKey: ServiceKey }) {
               ))}
             </ul>
           </div>
-          <div className="mt-20 border border-black/15 bg-[#e7e4dd] p-6 sm:p-8">
-            <div className="grid gap-5 md:grid-cols-2">
-              <div className="border border-black/15 bg-[#f7f7f3] p-6">
-                <p className="text-xs font-extrabold uppercase tracking-[.12em] text-[#101010]/70">
-                  Before
-                </p>
-                <p className="mt-3 text-xl font-bold leading-7 text-[#101010]">
-                  {service.before}
-                </p>
-              </div>
-              <div
-                className="border p-6 text-white"
-                style={{
-                  borderColor: service.colour,
-                  backgroundColor: "#101010",
-                }}
-              >
-                <p
-                  className="text-xs font-extrabold uppercase tracking-[.12em]"
-                  style={{ color: service.colour }}
-                >
-                  After
-                </p>
-                <p className="mt-3 text-xl font-bold leading-7">
-                  {service.after}
-                </p>
-              </div>
-            </div>
-          </div>
+          <figure className="mt-16 overflow-hidden border border-black/15 bg-white">
+            <Image src={comparison.src} alt={comparison.alt} width={1536} height={1024} className="h-auto w-full" />
+          </figure>
           <div className="mt-20 grid gap-10 lg:grid-cols-[1fr_.8fr]">
             <div>
               <p
