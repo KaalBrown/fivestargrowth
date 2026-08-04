@@ -256,7 +256,7 @@ export default function HomePage() {
       >
         <div className="mx-auto max-w-[1240px]">
           <Reveal>
-            <p className="fsg-mono text-[10px] uppercase tracking-[.16em] text-[#ff8a5d]">
+            <p className="fsg-mono text-xs uppercase tracking-[.14em] text-[#ff8a5d]">
               What we solve / 02
             </p>
             <div className="mt-5 grid items-center gap-10 border-b border-white/15 pb-12 lg:grid-cols-[1fr_.9fr] lg:pb-14">
@@ -344,7 +344,7 @@ export default function HomePage() {
       >
         <div className="mx-auto max-w-[1240px]">
           <Reveal className="max-w-3xl">
-            <p className="fsg-mono inline-flex bg-white/[.06] px-3 py-1 text-[10px] uppercase tracking-[.16em] text-[#ff8a5d]">
+            <p className="fsg-mono inline-flex bg-white/[.06] px-3 py-1.5 text-xs uppercase tracking-[.14em] text-[#ff8a5d]">
               The Growth System
             </p>
             <h2 className="mt-5 text-4xl font-extrabold leading-[.94] tracking-[-.07em] sm:text-6xl">
@@ -359,20 +359,20 @@ export default function HomePage() {
             {growthSystemSteps.map(([number, channel, title, copy]) => (
               <StaggerItem key={number}>
                 <HoverPanel>
-                  <article className="group min-h-[280px] border border-white/15 bg-white/[.04] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#ff5a1f] hover:bg-white/[.07]">
+                  <article className="group min-h-[250px] border border-white/15 bg-white/[.04] p-5 transition duration-300 hover:-translate-y-1 hover:border-[#ff5a1f] hover:bg-white/[.07] sm:p-6">
                     <div className="border-b border-white/15 pb-5">
-                      <span className="fsg-mono inline-flex rounded-full bg-white/[.08] px-3 py-1.5 text-[10px] font-bold tracking-[.12em] text-white/80">
+                      <span className="fsg-mono inline-flex rounded-full bg-white/[.08] px-3 py-1.5 text-[11px] font-bold tracking-[.1em] text-white/90">
                         {number} / {channel}
                       </span>
                     </div>
                     <h3 className="mt-7 text-2xl font-extrabold tracking-[-.06em]">
                       {title}
                     </h3>
-                    <p className="mt-4 max-w-xs text-lg leading-7 text-white/75">
+                    <p className="mt-4 max-w-xs text-[1.2rem] leading-7 text-white/90">
                       {copy}
                     </p>
                     <div className="mt-8 border-t border-white/15 pt-4">
-                      <span className="fsg-mono inline-flex items-center gap-2 rounded-full bg-white/[.08] px-3 py-1 text-[10px] uppercase tracking-[.12em] text-white/70">
+                      <span className="fsg-mono inline-flex items-center gap-2 rounded-full bg-white/[.08] px-3 py-1.5 text-[11px] uppercase tracking-[.1em] text-white/85">
                         <span className="h-1.5 w-1.5 rounded-full bg-[#ff5a1f] group-hover:animate-pulse" />
                         Step {number}
                       </span>
